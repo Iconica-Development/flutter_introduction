@@ -1,0 +1,66 @@
+library flutter_introduction;
+
+import 'package:flutter/material.dart';
+import 'package:flutter_introduction_service/flutter_introduction_service.dart';
+import 'package:flutter_introduction_widget/flutter_introduction_widget.dart';
+
+export 'package:flutter_introduction_widget/flutter_introduction_widget.dart';
+export 'package:flutter_introduction_service/flutter_introduction_service.dart';
+
+class Introduction extends StatefulWidget {
+  const Introduction({
+    required this.navigateTo,
+    required this.options,
+    this.physics,
+    this.service,
+    super.key,
+  });
+
+  final Function navigateTo;
+  final IntroductionService? service;
+  final IntroductionOptions options;
+  final ScrollPhysics? physics;
+
+  @override
+  State<Introduction> createState() => _IntroductionState();
+}
+
+class _IntroductionState extends State<Introduction> {
+  late IntroductionService _service;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.service == null) {
+      _service = IntroductionService();
+    } else {
+      _service = widget.service!;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _service.shouldShow(),
+      builder: (context, snapshot) {
+        if (snapshot.data == null || !snapshot.data!) {
+          return IntroductionScreen(
+            options: widget.options,
+            onComplete: () async {
+              _service.onComplete();
+              widget.navigateTo();
+            },
+            physics: widget.physics,
+            onSkip: () {
+              _service.onComplete();
+              widget.navigateTo();
+            },
+          );
+        } else {
+          widget.navigateTo();
+          return Container();
+        }
+      },
+    );
+  }
+}
