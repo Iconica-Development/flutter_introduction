@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_introduction/flutter_introduction.dart';
+import 'package:flutter_introduction_shared_preferences/flutter_introduction_shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  IntroductionService service = IntroductionService();
+  IntroductionService service =
+      IntroductionService(SharedPreferencesIntroductionDataProvider());
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         },
+        child: const Home(),
       ),
     );
   }

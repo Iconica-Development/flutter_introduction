@@ -11,6 +11,7 @@ class Introduction extends StatefulWidget {
   const Introduction({
     required this.navigateTo,
     required this.options,
+    required this.child,
     this.physics,
     this.service,
     super.key,
@@ -20,6 +21,7 @@ class Introduction extends StatefulWidget {
   final IntroductionService? service;
   final IntroductionOptions options;
   final ScrollPhysics? physics;
+  final Widget child;
 
   @override
   State<Introduction> createState() => _IntroductionState();
@@ -51,14 +53,13 @@ class _IntroductionState extends State<Introduction> {
               widget.navigateTo();
             },
             physics: widget.physics,
-            onSkip: () {
+            onSkip: () async {
               _service.onComplete();
               widget.navigateTo();
             },
           );
         } else {
-          widget.navigateTo();
-          return Container();
+          return widget.child;
         }
       },
     );

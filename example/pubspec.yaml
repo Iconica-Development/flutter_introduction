@@ -38,6 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_introduction: 
     path: ../
+  flutter_introduction_shared_preferences:
+    git:
+      url: https://github.com/Iconica-Development/flutter_introduction_shared_preferences.git
+      ref: master
 
 dev_dependencies:
   flutter_test:
