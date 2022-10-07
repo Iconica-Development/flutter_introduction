@@ -165,18 +165,18 @@ packages:
   flutter_introduction_interface:
     dependency: transitive
     description:
-      path: flutter_introduction_interface
+      path: "."
       ref: master
-      resolved-ref: "2add5853118e3290d429ab6ba2b0ac10e41657b6"
-      url: "https://github.com/Iconica-Development/flutter_introduction_service.git"
+      resolved-ref: "0610ece5bd81bade8ad1af51ae7428146233ef79"
+      url: "https://github.com/Iconica-Development/flutter_introduction_interface.git"
     source: git
     version: "0.0.1"
   flutter_introduction_service:
     dependency: transitive
     description:
-      path: flutter_introduction_service
+      path: "."
       ref: master
-      resolved-ref: "2add5853118e3290d429ab6ba2b0ac10e41657b6"
+      resolved-ref: "7d6f926f3a43e0e8246571d0ab76d7a63f6bee84"
       url: "https://github.com/Iconica-Development/flutter_introduction_service.git"
     source: git
     version: "0.0.1"

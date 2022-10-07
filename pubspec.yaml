@@ -17,7 +17,6 @@ dependencies:
   flutter_introduction_service:
     git:
       url: https://github.com/Iconica-Development/flutter_introduction_service.git
-      path: flutter_introduction_service
       ref: master
 
 dev_dependencies:
