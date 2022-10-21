@@ -11,7 +11,7 @@ class Introduction extends StatefulWidget {
   const Introduction({
     required this.navigateTo,
     required this.options,
-    required this.child,
+    this.child,
     this.physics,
     this.service,
     super.key,
@@ -21,7 +21,7 @@ class Introduction extends StatefulWidget {
   final IntroductionService? service;
   final IntroductionOptions options;
   final ScrollPhysics? physics;
-  final Widget child;
+  final Widget? child;
 
   @override
   State<Introduction> createState() => _IntroductionState();
@@ -59,7 +59,10 @@ class _IntroductionState extends State<Introduction> {
             },
           );
         } else {
-          return widget.child;
+          WidgetsBinding.instance!.addPostFrameCallback((_) {
+            widget.navigateTo();
+          });
+          return widget.child ?? const CircularProgressIndicator();
         }
       },
     );
