@@ -49,7 +49,7 @@ class _IntroductionState extends State<Introduction> {
     return FutureBuilder(
       future: _service.shouldShow(),
       builder: (context, snapshot) {
-        if (snapshot.data == null || !snapshot.data!) {
+        if (snapshot.data == null || snapshot.data!) {
           return IntroductionScreen(
             options: widget.options,
             onComplete: () async {
