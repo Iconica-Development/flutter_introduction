@@ -63,7 +63,7 @@ class _IntroductionState extends State<Introduction> {
             },
           );
         } else {
-          WidgetsBinding.instance!.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             widget.navigateTo();
           });
           return widget.child ?? const CircularProgressIndicator();

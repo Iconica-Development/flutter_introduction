@@ -1,3 +1,7 @@
+## 1.0.0
+
+* Update introduction_widget and introduction_service
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial release.
