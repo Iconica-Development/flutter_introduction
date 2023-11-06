@@ -1,0 +1,15 @@
+include: package:flutter_lints/flutter.yaml
+analyzer:
+  errors:
+    todo: ignore
+  exclude: [lib/generated_plugin_registrant.dart]
+linter:
+  # https://dart.dev/tools/linter-rules#lints
+  rules:
+    # pub rules
+    depend_on_referenced_packages: true
+    secure_pubspec_urls: false
+    sort_pub_dependencies: false
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options

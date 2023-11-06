@@ -1,0 +1,23 @@
+name: flutter_introduction_service
+description: A new Flutter package project.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_introduction_interface:
+    git: 
+      url: https://github.com/Iconica-Development/flutter_introduction_interface.git
+      ref: 1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
