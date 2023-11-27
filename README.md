@@ -1,6 +1,21 @@
 # Flutter Introduction
 
-![Flutter Introduction GIF](example.gif)
+Monorepo for the Flutter introduction package. Including the following packages:
+- Flutter Introduction
+    Main packge for Flutter Introduction.
+
+- Flutter Introduction Firebase
+    Package to provide content from firebase.
+
+- Flutter Introduction Interface
+
+
+- Flutter Introduction Service
+
+- Flutter Introduction Shared Preferences
+
+- Flutter Introduction Widget
+    
 
 ## Setup
 

@@ -12,8 +12,9 @@ dependencies:
     sdk: flutter
   flutter_introduction_interface: 
     git: 
-      url: https://github.com/Iconica-Development/flutter_introduction_interface.git
-      ref: 1.0.0
+      url: https://github.com/Iconica-Development/flutter_introduction
+      ref: 2.0.0
+      path: packages/flutter_introduction_interface
   shared_preferences: any
 
 dev_dependencies:

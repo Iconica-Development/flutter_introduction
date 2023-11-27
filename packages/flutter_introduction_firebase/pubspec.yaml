@@ -14,12 +14,14 @@ dependencies:
 
   flutter_introduction_widget:
     git:
-      url: https://github.com/Iconica-Development/flutter_introduction_widget
-      ref: 4.1.0
+      url: https://github.com/Iconica-Development/flutter_introduction
+      ref: 2.0.0
+      path: packages/flutter_introduction_widget
   flutter_introduction_service:
     git:
-      url: https://github.com/Iconica-Development/flutter_introduction_service
-      ref: 1.0.0
+      url: https://github.com/Iconica-Development/flutter_introduction
+      ref: 2.0.0
+      path: packages/flutter_introduction_service
 
 dev_dependencies:
   flutter_test:
