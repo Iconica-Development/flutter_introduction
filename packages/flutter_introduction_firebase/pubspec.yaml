@@ -1,6 +1,6 @@
 name: flutter_introduction_firebase
 description: Flutter Introduction Page that uses firebase for the pages and some settings
-version: 1.0.0
+version: 2.0.0
 publish_to: none
 
 environment:
