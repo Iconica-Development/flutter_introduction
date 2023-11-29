@@ -57,8 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
             introductionTranslations: const IntroductionTranslations(
               skipButton: 'Skip it!',
-              nextButton: 'Previous',
-              previousButton: 'Next',
+              nextButton: 'Next',
+              previousButton: 'Previous',
               finishButton: 'To the app!',
             ),
             tapEnabled: true,
