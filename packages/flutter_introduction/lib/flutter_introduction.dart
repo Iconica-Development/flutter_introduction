@@ -2,14 +2,12 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-library flutter_introduction;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_introduction_service/flutter_introduction_service.dart';
 import 'package:flutter_introduction_widget/flutter_introduction_widget.dart';
 
-export 'package:flutter_introduction_widget/flutter_introduction_widget.dart';
 export 'package:flutter_introduction_service/flutter_introduction_service.dart';
+export 'package:flutter_introduction_widget/flutter_introduction_widget.dart';
 
 class Introduction extends StatefulWidget {
   const Introduction({
@@ -21,7 +19,7 @@ class Introduction extends StatefulWidget {
     super.key,
   });
 
-  final Function navigateTo;
+  final VoidCallback navigateTo;
   final IntroductionService? service;
   final IntroductionOptions options;
   final ScrollPhysics? physics;
@@ -45,30 +43,29 @@ class _IntroductionState extends State<Introduction> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _service.shouldShow(),
-      builder: (context, snapshot) {
-        if (snapshot.data == null || snapshot.data!) {
-          return IntroductionScreen(
-            options: widget.options,
-            onComplete: () async {
-              _service.onComplete();
+  Widget build(BuildContext context) => FutureBuilder(
+        // ignore: discarded_futures
+        future: _service.shouldShow(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null || snapshot.data!) {
+            return IntroductionScreen(
+              options: widget.options,
+              onComplete: () async {
+                await _service.onComplete();
+                widget.navigateTo();
+              },
+              physics: widget.physics,
+              onSkip: () async {
+                await _service.onComplete();
+                widget.navigateTo();
+              },
+            );
+          } else {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
               widget.navigateTo();
-            },
-            physics: widget.physics,
-            onSkip: () async {
-              _service.onComplete();
-              widget.navigateTo();
-            },
-          );
-        } else {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            widget.navigateTo();
-          });
-          return widget.child ?? const CircularProgressIndicator();
-        }
-      },
-    );
-  }
+            });
+            return widget.child ?? const CircularProgressIndicator();
+          }
+        },
+      );
 }

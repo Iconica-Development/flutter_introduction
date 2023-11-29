@@ -10,15 +10,9 @@ class IntroductionService {
 
   late final IntroductionInterface _dataProvider;
 
-  Future<void> onSkip() {
-    return _dataProvider.setCompleted(true);
-  }
+  Future<void> onSkip() => _dataProvider.setCompleted(value: true);
 
-  Future<void> onComplete() {
-    return _dataProvider.setCompleted(true);
-  }
+  Future<void> onComplete() => _dataProvider.setCompleted(value: true);
 
-  Future<bool> shouldShow() {
-    return _dataProvider.shouldShow();
-  }
+  Future<bool> shouldShow() => _dataProvider.shouldShow();
 }

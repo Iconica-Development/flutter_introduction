@@ -19,7 +19,7 @@ abstract class IntroductionInterface extends DataInterface {
     _instance = instance;
   }
 
-  Future<void> setCompleted([bool value = true]);
+  Future<void> setCompleted({bool value = true});
 
   Future<bool> shouldShow();
 }

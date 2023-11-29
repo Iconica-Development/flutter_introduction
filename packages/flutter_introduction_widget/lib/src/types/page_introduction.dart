@@ -2,13 +2,14 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-import 'package:flutter/material.dart';
-import 'package:flutter_introduction_widget/src/introduction.dart';
+import 'dart:async';
 
-import '../config/introduction.dart';
-import '../widgets/background.dart';
-import '../widgets/indicator.dart';
-import '../widgets/page_content.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_introduction_widget/src/config/introduction.dart';
+import 'package:flutter_introduction_widget/src/introduction.dart';
+import 'package:flutter_introduction_widget/src/widgets/background.dart';
+import 'package:flutter_introduction_widget/src/widgets/indicator.dart';
+import 'package:flutter_introduction_widget/src/widgets/page_content.dart';
 
 class MultiPageIntroductionScreen extends StatefulWidget {
   const MultiPageIntroductionScreen({
@@ -18,8 +19,8 @@ class MultiPageIntroductionScreen extends StatefulWidget {
     this.onNext,
     this.onPrevious,
     this.onSkip,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final VoidCallback onComplete;
   final VoidCallback? onSkip;
@@ -71,7 +72,7 @@ class _MultiPageIntroductionScreenState
             }
             // add bouncing scroll physics support
             if (notification is ScrollUpdateNotification) {
-              final offset = notification.metrics.pixels;
+              var offset = notification.metrics.pixels;
               if (offset > notification.metrics.maxScrollExtent + 8) {
                 widget.onComplete.call();
               }
@@ -83,17 +84,15 @@ class _MultiPageIntroductionScreenState
             physics: widget.physics,
             children: List.generate(
               pages.length,
-              (index) {
-                return ExplainerPage(
-                  onTap: () {
-                    widget.onNext?.call(pages[_currentPage.value]);
-                  },
-                  controller: _controller,
-                  page: pages[index],
-                  options: widget.options,
-                  index: index,
-                );
-              },
+              (index) => ExplainerPage(
+                onTap: () {
+                  widget.onNext?.call(pages[_currentPage.value]);
+                },
+                controller: _controller,
+                page: pages[index],
+                options: widget.options,
+                index: index,
+              ),
             ),
           ),
         ),
@@ -109,25 +108,22 @@ class _MultiPageIntroductionScreenState
                     height: 64,
                     child: AnimatedBuilder(
                       animation: _controller,
-                      builder: (context, _) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            if (widget.options.skippable &&
-                                !_isLast(pages)) ...[
-                              TextButton(
-                                onPressed: widget.onComplete,
-                                child: Text(translations.skipButton),
-                              ),
-                            ],
+                      builder: (context, _) => Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          if (widget.options.skippable && !_isLast(pages)) ...[
+                            TextButton(
+                              onPressed: widget.onComplete,
+                              child: Text(translations.skipButton),
+                            ),
                           ],
-                        );
-                      },
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ] else ...[
-                const SizedBox.shrink()
+                const SizedBox.shrink(),
               ],
               Align(
                 alignment: Alignment.bottomCenter,
@@ -190,23 +186,22 @@ class _MultiPageIntroductionScreenState
           ),
         ),
         AnimatedBuilder(
-            animation: _controller,
-            builder: (context, _) {
-              return IntroductionIconButtons(
-                controller: _controller,
-                next: _isNext(pages),
-                previous: _isPrevious,
-                last: _isLast(pages),
-                options: widget.options,
-                onFinish: widget.onComplete,
-                onNext: () {
-                  widget.onNext?.call(pages[_currentPage.value]);
-                },
-                onPrevious: () {
-                  widget.onNext?.call(pages[_currentPage.value]);
-                },
-              );
-            }),
+          animation: _controller,
+          builder: (context, _) => IntroductionIconButtons(
+            controller: _controller,
+            next: _isNext(pages),
+            previous: _isPrevious,
+            last: _isLast(pages),
+            options: widget.options,
+            onFinish: widget.onComplete,
+            onNext: () {
+              widget.onNext?.call(pages[_currentPage.value]);
+            },
+            onPrevious: () {
+              widget.onNext?.call(pages[_currentPage.value]);
+            },
+          ),
+        ),
       ],
     );
   }
@@ -227,8 +222,8 @@ class ExplainerPage extends StatelessWidget {
     required this.index,
     required this.controller,
     this.onTap,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final IntroductionPage page;
   final IntroductionOptions options;
@@ -297,8 +292,8 @@ class IntroductionTwoButtons extends StatelessWidget {
     required this.onFinish,
     required this.onNext,
     required this.onPrevious,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final IntroductionOptions options;
   final PageController controller;
@@ -310,8 +305,8 @@ class IntroductionTwoButtons extends StatelessWidget {
   final bool next;
   final bool last;
 
-  void _previous() {
-    controller.previousPage(
+  Future<void> _previous() async {
+    await controller.previousPage(
       duration: kAnimationDuration,
       curve: Curves.easeInOut,
     );
@@ -402,8 +397,8 @@ class IntroductionTwoButtons extends StatelessWidget {
     );
   }
 
-  _next() {
-    controller.nextPage(
+  Future<void> _next() async {
+    await controller.nextPage(
       duration: kAnimationDuration,
       curve: Curves.easeInOut,
     );
@@ -421,8 +416,8 @@ class IntroductionOneButton extends StatelessWidget {
     required this.onFinish,
     required this.onNext,
     required this.onPrevious,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final IntroductionOptions options;
   final PageController controller;
@@ -434,8 +429,8 @@ class IntroductionOneButton extends StatelessWidget {
   final bool next;
   final bool last;
 
-  void _previous() {
-    controller.previousPage(
+  Future<void> _previous() async {
+    await controller.previousPage(
       duration: kAnimationDuration,
       curve: Curves.easeInOut,
     );
@@ -508,8 +503,8 @@ class IntroductionOneButton extends StatelessWidget {
     );
   }
 
-  _next() {
-    controller.nextPage(
+  Future<void> _next() async {
+    await controller.nextPage(
       duration: kAnimationDuration,
       curve: Curves.easeInOut,
     );
@@ -527,8 +522,8 @@ class IntroductionIconButtons extends StatelessWidget {
     required this.onFinish,
     required this.onNext,
     required this.onPrevious,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final IntroductionOptions options;
   final PageController controller;
@@ -540,8 +535,8 @@ class IntroductionIconButtons extends StatelessWidget {
   final bool next;
   final bool last;
 
-  void _previous() {
-    controller.previousPage(
+  Future<void> _previous() async {
+    await controller.previousPage(
       duration: kAnimationDuration,
       curve: Curves.easeInOut,
     );
@@ -549,39 +544,37 @@ class IntroductionIconButtons extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (options.buttonMode == IntroductionScreenButtonMode.icon) ...[
-            if (previous) ...[
+  Widget build(BuildContext context) => Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (options.buttonMode == IntroductionScreenButtonMode.icon) ...[
+              if (previous) ...[
+                IconButton(
+                  iconSize: 70,
+                  onPressed: _previous,
+                  icon: const Icon(Icons.chevron_left),
+                ),
+              ] else
+                const SizedBox.shrink(),
               IconButton(
                 iconSize: 70,
-                onPressed: _previous,
-                icon: const Icon(Icons.chevron_left),
+                onPressed: () {
+                  if (next) {
+                    unawaited(_next());
+                  } else {
+                    onFinish?.call();
+                  }
+                },
+                icon: const Icon(Icons.chevron_right),
               ),
-            ] else
-              const SizedBox.shrink(),
-            IconButton(
-              iconSize: 70,
-              onPressed: () {
-                if (next) {
-                  _next();
-                } else {
-                  onFinish?.call();
-                }
-              },
-              icon: const Icon(Icons.chevron_right),
-            ),
+            ],
           ],
-        ],
-      ),
-    );
-  }
+        ),
+      );
 
-  _next() {
-    controller.nextPage(
+  Future<void> _next() async {
+    await controller.nextPage(
       duration: kAnimationDuration,
       curve: Curves.easeInOut,
     );

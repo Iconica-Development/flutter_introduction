@@ -14,15 +14,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(),
+      );
 }
 
 class MyHomePage extends StatefulWidget {
@@ -37,55 +35,51 @@ class _MyHomePageState extends State<MyHomePage> {
       IntroductionService(SharedPreferencesIntroductionDataProvider());
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Introduction(
-        options: IntroductionOptions(
-          pages: [
-            IntroductionPage(
-              title: const Text('First page'),
-              text: const Text('Wow a page'),
-              graphic: const FlutterLogo(),
+  Widget build(BuildContext context) => Scaffold(
+        body: Introduction(
+          options: IntroductionOptions(
+            pages: [
+              IntroductionPage(
+                title: const Text('First page'),
+                text: const Text('Wow a page'),
+                graphic: const FlutterLogo(),
+              ),
+              IntroductionPage(
+                title: const Text('Second page'),
+                text: const Text('Another page'),
+                graphic: const FlutterLogo(),
+              ),
+              IntroductionPage(
+                title: const Text('Third page'),
+                text: const Text('The final page of this app'),
+                graphic: const FlutterLogo(),
+              ),
+            ],
+            introductionTranslations: const IntroductionTranslations(
+              skipButton: 'Skip it!',
+              nextButton: 'Previous',
+              previousButton: 'Next',
+              finishButton: 'To the app!',
             ),
-            IntroductionPage(
-              title: const Text('Second page'),
-              text: const Text('Another page'),
-              graphic: const FlutterLogo(),
-            ),
-            IntroductionPage(
-              title: const Text('Third page'),
-              text: const Text('The final page of this app'),
-              graphic: const FlutterLogo(),
-            ),
-          ],
-          introductionTranslations: const IntroductionTranslations(
-            skipButton: 'Skip it!',
-            nextButton: 'Previous',
-            previousButton: 'Next',
-            finishButton: 'To the app!',
+            tapEnabled: true,
+            displayMode: IntroductionDisplayMode.multiPageHorizontal,
+            buttonMode: IntroductionScreenButtonMode.text,
+            indicatorMode: IndicatorMode.dash,
+            skippable: true,
+            buttonBuilder: (context, onPressed, child, type) =>
+                ElevatedButton(onPressed: onPressed, child: child),
           ),
-          tapEnabled: true,
-          displayMode: IntroductionDisplayMode.multiPageHorizontal,
-          buttonMode: IntroductionScreenButtonMode.text,
-          indicatorMode: IndicatorMode.dash,
-          skippable: true,
-          buttonBuilder: (context, onPressed, child, type) =>
-              ElevatedButton(onPressed: onPressed, child: child),
+          service: service,
+          navigateTo: () async {
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const Home(),
+              ),
+            );
+          },
+          child: const Home(),
         ),
-        service: service,
-        navigateTo: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return const Home();
-              },
-            ),
-          );
-        },
-        child: const Home(),
-      ),
-    );
-  }
+      );
 }
 
 class Home extends StatelessWidget {
@@ -94,7 +88,5 @@ class Home extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context) => Container();
 }

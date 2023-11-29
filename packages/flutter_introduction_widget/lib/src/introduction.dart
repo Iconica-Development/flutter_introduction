@@ -3,23 +3,22 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_introduction_widget/src/config/introduction.dart';
 import 'package:flutter_introduction_widget/src/types/page_introduction.dart';
 import 'package:flutter_introduction_widget/src/types/single_introduction.dart';
-
-import 'config/introduction.dart';
 
 const kAnimationDuration = Duration(milliseconds: 300);
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({
-    Key? key,
     required this.options,
     required this.onComplete,
+    super.key,
     this.physics,
     this.onNext,
     this.onPrevious,
     this.onSkip,
-  }) : super(key: key);
+  });
 
   /// The options used to build the introduction screen
   final IntroductionOptions options;
@@ -40,28 +39,26 @@ class IntroductionScreen extends StatelessWidget {
   final void Function(IntroductionPage)? onPrevious;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Builder(
-        builder: (context) {
-          switch (options.displayMode) {
-            case IntroductionDisplayMode.multiPageHorizontal:
-              return MultiPageIntroductionScreen(
-                onComplete: onComplete,
-                physics: physics,
-                onSkip: onSkip,
-                onPrevious: onPrevious,
-                onNext: onNext,
-                options: options,
-              );
-            case IntroductionDisplayMode.singleScrollablePageVertical:
-              return SingleIntroductionPage(
-                options: options,
-              );
-          }
-        },
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Builder(
+          builder: (context) {
+            switch (options.displayMode) {
+              case IntroductionDisplayMode.multiPageHorizontal:
+                return MultiPageIntroductionScreen(
+                  onComplete: onComplete,
+                  physics: physics,
+                  onSkip: onSkip,
+                  onPrevious: onPrevious,
+                  onNext: onNext,
+                  options: options,
+                );
+              case IntroductionDisplayMode.singleScrollablePageVertical:
+                return SingleIntroductionPage(
+                  options: options,
+                );
+            }
+          },
+        ),
+      );
 }

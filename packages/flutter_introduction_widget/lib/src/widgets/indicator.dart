@@ -2,12 +2,12 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_introduction_widget/src/config/introduction.dart';
 import 'package:flutter_introduction_widget/src/introduction.dart';
-
-import '../config/introduction.dart';
 
 class Indicator extends StatelessWidget {
   const Indicator({
@@ -16,12 +16,12 @@ class Indicator extends StatelessWidget {
     required this.count,
     required this.index,
     required this.indicatorBuilder,
-    Key? key,
-  })  : assert(
+    super.key,
+  }) : assert(
           !(mode == IndicatorMode.custom && indicatorBuilder == null),
-          "When a custom indicator is used the indicatorBuilder must be provided",
-        ),
-        super(key: key);
+          'When a custom indicator is used the indicatorBuilder '
+          'must be provided',
+        );
 
   final IndicatorMode mode;
   final PageController controller;
@@ -36,7 +36,7 @@ class Indicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    var theme = Theme.of(context);
     switch (mode) {
       case IndicatorMode.custom:
         return indicatorBuilder!.call(context, controller, index, count);
@@ -47,10 +47,12 @@ class Indicator extends StatelessWidget {
           dotcolor: theme.colorScheme.secondary,
           itemCount: count,
           onPageSelected: (int page) {
-            controller.animateToPage(
-              page,
-              duration: kAnimationDuration,
-              curve: Curves.easeInOut,
+            unawaited(
+              controller.animateToPage(
+                page,
+                duration: kAnimationDuration,
+                curve: Curves.easeInOut,
+              ),
             );
           },
         );
@@ -60,10 +62,12 @@ class Indicator extends StatelessWidget {
           selectedColor: theme.colorScheme.primary,
           itemCount: count,
           onPageSelected: (int page) {
-            controller.animateToPage(
-              page,
-              duration: kAnimationDuration,
-              curve: Curves.easeInOut,
+            unawaited(
+              controller.animateToPage(
+                page,
+                duration: kAnimationDuration,
+                curve: Curves.easeInOut,
+              ),
             );
           },
         );
@@ -72,76 +76,73 @@ class Indicator extends StatelessWidget {
 }
 
 class DashIndicator extends AnimatedWidget {
+  const DashIndicator({
+    required this.controller,
+    required this.selectedColor,
+    required this.itemCount,
+    required this.onPageSelected,
+    this.color = Colors.white,
+    super.key,
+  }) : super(listenable: controller);
   final PageController controller;
   final Color color;
   final Color selectedColor;
   final int itemCount;
   final Function(int) onPageSelected;
-  const DashIndicator(
-      {required this.controller,
-      this.color = Colors.white,
-      required this.selectedColor,
-      required this.itemCount,
-      required this.onPageSelected,
-      Key? key})
-      : super(listenable: controller, key: key);
 
   int _getPage() {
     try {
       return controller.page?.round() ?? 0;
-    } catch (_) {
+    } on Exception catch (_) {
       return 0;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    int index = _getPage();
+    var index = _getPage();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         for (int i = 0; i < itemCount; i++) ...[
-          buildDash(i, index == i),
+          buildDash(i, selected: index == i),
         ],
       ],
     );
   }
 
-  Widget buildDash(int index, bool selected) {
-    return SizedBox(
-      width: 20,
-      child: Center(
-        child: Material(
-          color: selected ? color : color.withAlpha(125),
-          type: MaterialType.card,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2.5),
-            ),
-            width: 16,
-            height: 5,
-            child: InkWell(
-              onTap: () => onPageSelected.call(index),
+  Widget buildDash(int index, {required bool selected}) => SizedBox(
+        width: 20,
+        child: Center(
+          child: Material(
+            color: selected ? color : color.withAlpha(125),
+            type: MaterialType.card,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2.5),
+              ),
+              width: 16,
+              height: 5,
+              child: InkWell(
+                onTap: () => onPageSelected.call(index),
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 /// An indicator showing the currently selected page of a PageController
 class DotsIndicator extends AnimatedWidget {
   const DotsIndicator({
-    this.color = Colors.white,
     required this.controller,
+    this.color = Colors.white,
     this.dotcolor = Colors.green,
     this.itemCount,
     this.onPageSelected,
-    Key? key,
+    super.key,
   }) : super(
           listenable: controller,
-          key: key,
         );
 
   /// The PageController that this DotsIndicator is representing.
@@ -169,14 +170,14 @@ class DotsIndicator extends AnimatedWidget {
   static const double _kDotSpacing = 12.0;
 
   Widget _buildDot(int index) {
-    double selectedness = Curves.easeOut.transform(
+    var selectedness = Curves.easeOut.transform(
       max(
         0.0,
         1.0 -
             ((controller.page ?? controller.initialPage).round() - index).abs(),
       ),
     );
-    double zoom = 1.0 + (_kMaxZoom - 1.0) * selectedness;
+    var zoom = 1.0 + (_kMaxZoom - 1.0) * selectedness;
 
     return SizedBox(
       width: _kDotSpacing,
@@ -203,10 +204,8 @@ class DotsIndicator extends AnimatedWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List<Widget>.generate(itemCount!, _buildDot),
-    );
-  }
+  Widget build(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List<Widget>.generate(itemCount!, _buildDot),
+      );
 }

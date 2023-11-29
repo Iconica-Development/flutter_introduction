@@ -4,13 +4,13 @@
 
 import 'package:flutter/cupertino.dart';
 
-import '../config/introduction.dart';
+import 'package:flutter_introduction_widget/src/config/introduction.dart';
 
 class SingleIntroductionPage extends StatelessWidget {
   const SingleIntroductionPage({
-    Key? key,
     required this.options,
-  }) : super(key: key);
+    super.key,
+  });
 
   final IntroductionOptions options;
 

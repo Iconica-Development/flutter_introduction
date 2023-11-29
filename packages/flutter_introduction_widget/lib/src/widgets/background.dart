@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
   const Background({
-    this.background,
     required this.child,
-    Key? key,
-  }) : super(key: key);
+    this.background,
+    super.key,
+  });
 
   final BoxDecoration? background;
   final Widget child;

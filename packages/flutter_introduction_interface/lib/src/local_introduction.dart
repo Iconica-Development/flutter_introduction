@@ -10,12 +10,10 @@ class LocalIntroductionDataProvider extends IntroductionInterface {
   bool hasViewed = false;
 
   @override
-  Future<void> setCompleted([bool value = true]) async {
+  Future<void> setCompleted({bool value = true}) async {
     hasViewed = value;
   }
 
   @override
-  Future<bool> shouldShow() async {
-    return hasViewed;
-  }
+  Future<bool> shouldShow() async => hasViewed;
 }
