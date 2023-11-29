@@ -1,14 +1,16 @@
 # Flutter Introduction
 
+![Introduction GIF](flutter_introduction_widget.gif)
+
 Monorepo for the Flutter introduction package. Including the following packages:
 - Flutter Introduction
-    Main packge for Flutter Introduction including an example.
+    Main package for Flutter Introduction including an example.
 
 - Flutter Introduction Firebase
     Package to provide content from firebase.
 
 - Flutter Introduction Interface
-    Interface regarding data for the Introduction widget, like wether to show the introduction or not.
+    Interface regarding data for the Introduction widget, like whether to show the introduction or not.
 
 - Flutter Introduction Service
     Service to handle actions done in the Introduction widget.

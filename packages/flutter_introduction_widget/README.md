@@ -3,7 +3,7 @@
 # Introduction Widget
 Flutter Introduction Widget for showing a list of introduction pages on a single scrollable page or horizontal pageview.
 
-![Introduction GIF](flutter_introduction_widget.gif)
+![Introduction GIF](../../flutter_introduction_widget.gif)
 
 ## Setup
 
