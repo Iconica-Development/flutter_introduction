@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           buttonMode: IntroductionScreenButtonMode.text,
           indicatorMode: IndicatorMode.dash,
           skippable: true,
-          buttonBuilder: (context, onPressed, child) =>
+          buttonBuilder: (context, onPressed, child, type) =>
               ElevatedButton(onPressed: onPressed, child: child),
         ),
         service: service,

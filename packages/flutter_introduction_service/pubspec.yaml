@@ -15,7 +15,7 @@ dependencies:
       url: https://github.com/Iconica-Development/flutter_introduction
       ref: 2.0.0
       path: packages/flutter_introduction_interface
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

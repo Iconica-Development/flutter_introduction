@@ -97,10 +97,12 @@ class _IntroductionState extends State<IntroductionFirebase> {
   @override
   Widget build(BuildContext context) {
     Future<bool> shouldShow() async =>
-        await _service.shouldShow() ||
-        await _firebaseService.shouldAlwaysShowIntroduction();
+        !await _firebaseService.introductionIsDisabled() &&
+        (await _service.shouldShow() ||
+            await _firebaseService.shouldAlwaysShowIntroduction());
     var languageCode = widget.languageCodeOverride ??
         Localizations.localeOf(context).languageCode;
+
     return FutureBuilder(
       future: shouldShow(),
       builder: (context, snapshot) {

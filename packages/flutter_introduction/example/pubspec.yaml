@@ -17,9 +17,10 @@ dependencies:
   flutter_introduction: 
     path: ../
   flutter_introduction_shared_preferences: 
-    git: 
-      url: https://github.com/Iconica-Development/flutter_introduction_shared_preferences.git
-      ref: 1.0.0
+     git:
+      url: https://github.com/Iconica-Development/flutter_introduction
+      ref: 2.0.0
+      path: packages/flutter_introduction_shared_preferences
 
 dev_dependencies:
   flutter_test:

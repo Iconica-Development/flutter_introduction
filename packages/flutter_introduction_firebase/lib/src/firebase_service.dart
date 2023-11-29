@@ -44,6 +44,11 @@ class FirebaseIntroductionService {
     }).toList();
   }
 
+  Future<bool> introductionIsDisabled() async {
+    var document = await _documentRef.get();
+    return document.data()!['disabled'] as bool? ?? false;
+  }
+
   Future<bool> shouldAlwaysShowIntroduction() async {
     var document = await _documentRef.get();
     return document.data()!['always_show'] as bool? ?? false;
