@@ -1,0 +1,34 @@
+name: flutter_introduction_firebase
+description: Flutter Introduction Page that uses firebase for the pages and some settings
+version: 2.0.0
+publish_to: none
+
+environment:
+  sdk: ">=3.1.5 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore: ^4.12.2
+  cached_network_image: ^3.3.0
+
+  flutter_introduction_widget:
+    git:
+      url: https://github.com/Iconica-Development/flutter_introduction
+      ref: 2.0.0
+      path: packages/flutter_introduction_widget
+  flutter_introduction_service:
+    git:
+      url: https://github.com/Iconica-Development/flutter_introduction
+      ref: 2.0.0
+      path: packages/flutter_introduction_service
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_iconica_analysis:
+    git:
+      url: https://github.com/Iconica-Development/flutter_iconica_analysis
+      ref: 6.0.0
+
+flutter:

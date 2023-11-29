@@ -1,7 +1,7 @@
-## 1.0.0
+## 2.0.0
 
-* Update introduction_widget and introduction_service
+* Initial release of working flutter_introduction mono project.
 
 ## 0.0.1
 
-* Initial release.
+* Initial release of combined flutter_introduction melos project

@@ -31,4 +31,13 @@ build/
 
 .metadata
 
+
+pubspec.lock
+
+pubspec_overrides.yaml
+
+example/ios
 example/web
+example/android
+example/linux
+example/macos

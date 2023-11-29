@@ -1,39 +1,39 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter Introduction
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+![Introduction GIF](flutter_introduction_widget.gif)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+Monorepo for the Flutter introduction package. Including the following packages:
+- Flutter Introduction
+    Main package for Flutter Introduction including an example.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+- Flutter Introduction Firebase
+    Package to provide content from firebase.
 
-## Features
+- Flutter Introduction Interface
+    Interface regarding data for the Introduction widget, like whether to show the introduction or not.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Flutter Introduction Service
+    Service to handle actions done in the Introduction widget.
 
-## Getting started
+- Flutter Introduction Shared Preferences
+    Implementation of the interface with the use of shared preferences.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Flutter Introduction Widget
+    The actual widget showing the Introduction widget.
 
-## Usage
+## How to use
+The simple way to use this package is by using the flutter_introduction package. An example is included if needed.
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+If needed a custom implementation can be made on the interface if the shared preferences doesn't suffice.
 
-```dart
-const like = 'sample';
-```
+## Issues
 
-## Additional information
+Please file any issues, bugs or feature request as an issue on our [GitHub](https://github.com/Iconica-Development/flutter_introduction/pulls) page. Commercial support is available if you need help with integration with your app or services. You can contact us at [support@iconica.nl](mailto:support@iconica.nl).
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Want to contribute
+
+If you would like to contribute to the plugin (e.g. by improving the documentation, solving a bug or adding a cool new feature), please carefully review our [contribution guide](../CONTRIBUTING.md) and send us your [pull request](https://github.com/Iconica-Development/flutter_introduction/pulls).
+
+## Author
+
+This `flutter_introduction` for Flutter is developed by [Iconica](https://iconica.nl). You can contact us at <support@iconica.nl>
