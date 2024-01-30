@@ -326,12 +326,20 @@ class IntroductionTwoButtons extends StatelessWidget {
             options.buttonBuilder?.call(
                   context,
                   _previous,
-                  Text(translations.previousButton),
+                  Text(
+                    translations.previousButton,
+                    style: options
+                        .introductionButtonTextstyles.previousButtonStyle,
+                  ),
                   IntroductionButtonType.previous,
                 ) ??
                 TextButton(
                   onPressed: _previous,
-                  child: Text(translations.previousButton),
+                  child: Text(
+                    translations.previousButton,
+                    style: options
+                        .introductionButtonTextstyles.previousButtonStyle,
+                  ),
                 ),
           ] else
             const SizedBox.shrink(),
@@ -339,12 +347,18 @@ class IntroductionTwoButtons extends StatelessWidget {
             options.buttonBuilder?.call(
                   context,
                   _next,
-                  Text(translations.nextButton),
+                  Text(
+                    translations.nextButton,
+                    style: options.introductionButtonTextstyles.nextButtonStyle,
+                  ),
                   IntroductionButtonType.next,
                 ) ??
                 TextButton(
                   onPressed: _next,
-                  child: Text(translations.nextButton),
+                  child: Text(
+                    translations.nextButton,
+                    style: options.introductionButtonTextstyles.nextButtonStyle,
+                  ),
                 ),
           ] else if (last) ...[
             options.buttonBuilder?.call(
@@ -352,14 +366,22 @@ class IntroductionTwoButtons extends StatelessWidget {
                   () {
                     onFinish?.call();
                   },
-                  Text(translations.finishButton),
+                  Text(
+                    translations.finishButton,
+                    style:
+                        options.introductionButtonTextstyles.finishButtonStyle,
+                  ),
                   IntroductionButtonType.finish,
                 ) ??
                 TextButton(
                   onPressed: () {
                     onFinish?.call();
                   },
-                  child: Text(translations.finishButton),
+                  child: Text(
+                    translations.finishButton,
+                    style:
+                        options.introductionButtonTextstyles.finishButtonStyle,
+                  ),
                 ),
           ] else ...[
             const SizedBox.shrink(),
@@ -379,14 +401,22 @@ class IntroductionTwoButtons extends StatelessWidget {
                       () {
                         onFinish?.call();
                       },
-                      Text(translations.finishButton),
+                      Text(
+                        translations.finishButton,
+                        style: options
+                            .introductionButtonTextstyles.finishButtonStyle,
+                      ),
                       IntroductionButtonType.finish,
                     ) ??
                     ElevatedButton(
                       onPressed: () {
                         onFinish?.call();
                       },
-                      child: Text(translations.finishButton),
+                      child: Text(
+                        translations.finishButton,
+                        style: options
+                            .introductionButtonTextstyles.finishButtonStyle,
+                      ),
                     ),
               ),
             ),
@@ -450,37 +480,59 @@ class IntroductionOneButton extends StatelessWidget {
                   () {
                     onFinish?.call();
                   },
-                  Text(translations.finishButton),
+                  Text(
+                    translations.finishButton,
+                    style:
+                        options.introductionButtonTextstyles.finishButtonStyle,
+                  ),
                   IntroductionButtonType.finish,
                 ) ??
                 TextButton(
                   onPressed: () {
                     onFinish?.call();
                   },
-                  child: Text(translations.finishButton),
+                  child: Text(
+                    translations.finishButton,
+                    style:
+                        options.introductionButtonTextstyles.finishButtonStyle,
+                  ),
                 ),
           ] else ...[
             options.buttonBuilder?.call(
                   context,
                   _next,
-                  Text(translations.nextButton),
+                  Text(
+                    translations.nextButton,
+                    style: options.introductionButtonTextstyles.nextButtonStyle,
+                  ),
                   IntroductionButtonType.next,
                 ) ??
                 TextButton(
                   onPressed: _next,
-                  child: Text(translations.nextButton),
+                  child: Text(
+                    translations.nextButton,
+                    style: options.introductionButtonTextstyles.nextButtonStyle,
+                  ),
                 ),
           ],
           if (previous) ...[
             options.buttonBuilder?.call(
                   context,
                   _previous,
-                  Text(translations.previousButton),
+                  Text(
+                    translations.previousButton,
+                    style: options
+                        .introductionButtonTextstyles.previousButtonStyle,
+                  ),
                   IntroductionButtonType.previous,
                 ) ??
                 TextButton(
                   onPressed: _previous,
-                  child: Text(translations.previousButton),
+                  child: Text(
+                    translations.previousButton,
+                    style: options
+                        .introductionButtonTextstyles.previousButtonStyle,
+                  ),
                 ),
           ] else ...[
             options.buttonBuilder?.call(
@@ -488,14 +540,22 @@ class IntroductionOneButton extends StatelessWidget {
                   () {
                     onFinish?.call();
                   },
-                  Text(translations.finishButton),
+                  Text(
+                    translations.finishButton,
+                    style:
+                        options.introductionButtonTextstyles.finishButtonStyle,
+                  ),
                   IntroductionButtonType.skip,
                 ) ??
                 TextButton(
                   onPressed: () {
                     onFinish?.call();
                   },
-                  child: Text(translations.finishButton),
+                  child: Text(
+                    translations.finishButton,
+                    style:
+                        options.introductionButtonTextstyles.finishButtonStyle,
+                  ),
                 ),
           ],
         ],
