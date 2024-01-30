@@ -59,6 +59,7 @@ class IntroductionPage {
 class IntroductionOptions {
   const IntroductionOptions({
     this.introductionTranslations = const IntroductionTranslations(),
+    this.introductionButtonTextstyles = const IntroductionButtonTextstyles(),
     this.indicatorMode = IndicatorMode.dash,
     this.indicatorBuilder,
     this.layoutStyle = IntroductionLayoutStyle.imageCenter,
@@ -79,12 +80,12 @@ class IntroductionOptions {
         );
 
   /// Determine when the introduction screens needs to be shown.
-  /// 
+  ///
   /// [IntroductionScreenMode.showNever] To disable introduction screens.
-  /// 
+  ///
   /// [IntroductionScreenMode.showAlways] To always show the introduction
   /// screens on startup.
-  /// 
+  ///
   /// [IntroductionScreenMode.showOnce] To only show the introduction screens
   /// once on startup.
   final IntroductionScreenMode mode;
@@ -101,13 +102,13 @@ class IntroductionOptions {
   /// introduction screen.
   /// Introduction screens can always be navigated by swiping (or tapping if
   /// [tapEnabled] is enabled).
-  /// 
+  ///
   /// [IntroductionScreenButtonMode.text] Use text buttons (text can be set by
   /// setting the translation key or using the default appshell translations).
-  /// 
+  ///
   /// [IntroductionScreenButtonMode.icon] Use icon buttons (icons can be
   /// changed by providing a icon library)
-  /// 
+  ///
   /// [IntroductionScreenButtonMode.disabled] Disable buttons.
   final IntroductionScreenButtonMode buttonMode;
 
@@ -115,21 +116,21 @@ class IntroductionOptions {
   /// using [pages].
   /// Every introduction page provided with a image or icon will use the same
   /// layout setting.
-  /// 
+  ///
   /// [IntroductionLayoutStyle.imageCenter] Image/icon will be at the center of the introduction page.
-  /// 
+  ///
   /// [IntroductionLayoutStyle.imageTop] Image/icon will be at the top of the introduction page.
-  /// 
+  ///
   /// [IntroductionLayoutStyle.imageBottom] Image/icon will be at the bottom of the introduction page.
   final IntroductionLayoutStyle layoutStyle;
 
   /// Determines the style of the page indicator shown at the bottom on the
   /// introduction pages.
-  /// 
+  ///
   /// [IndicatorMode.dot] Shows a dot for each page.
-  /// 
+  ///
   /// [IndicatorMode.dash] Shows a dash for each page.
-  /// 
+  ///
   /// [IndicatorMode.custom] calls indicatorBuilder for the indicator
   final IndicatorMode indicatorMode;
 
@@ -152,23 +153,23 @@ class IntroductionOptions {
   /// [IntroductionDisplayMode.multiPageHorizontal] Configured introduction
   /// pages will be shown on seperate screens and can be navigated using using
   /// buttons (if enabled) or swiping.
-  /// 
+  ///
   /// !Unimplemented! [IntroductionDisplayMode.singleScrollablePageVertical]
   /// All configured introduction pages will be shown on a single scrollable
   /// page.
   ///
   final IntroductionDisplayMode displayMode;
 
-  /// When [IntroductionDisplayMode.multiPageHorizontal] is selected multiple 
+  /// When [IntroductionDisplayMode.multiPageHorizontal] is selected multiple
   /// controlMode can be selected.
-  /// 
-  /// [IntroductionControlMode.previousNextButton] shows two buttons at the 
-  /// bottom of the screen to return or proceed. The skip button is placed at 
+  ///
+  /// [IntroductionControlMode.previousNextButton] shows two buttons at the
+  /// bottom of the screen to return or proceed. The skip button is placed at
   /// the top left of the screen.
-  /// 
-  /// [IntroductionControlMode.singleButton] contains one button at the bottom 
-  /// of the screen to proceed. Underneath is clickable text to skip if the 
-  /// current page is the first page. If the current page is any different it 
+  ///
+  /// [IntroductionControlMode.singleButton] contains one button at the bottom
+  /// of the screen to proceed. Underneath is clickable text to skip if the
+  /// current page is the first page. If the current page is any different it
   /// return to the previous screen.
   ///
   final IntroductionControlMode controlMode;
@@ -192,6 +193,16 @@ class IntroductionOptions {
   /// - Finish
   final IntroductionTranslations introductionTranslations;
 
+  /// The textstyles for all buttons on the introductionpages
+  ///
+  /// See [IntroductionButtonTextstyles] for more information
+  /// The following buttons have a textstyle:
+  /// - Skip
+  /// - Next
+  /// - Previous
+  /// - Finish
+  final IntroductionButtonTextstyles introductionButtonTextstyles;
+
   IntroductionOptions copyWith({
     IntroductionScreenMode? mode,
     List<IntroductionPage>? pages,
@@ -212,6 +223,7 @@ class IntroductionOptions {
     Widget Function(BuildContext, VoidCallback, Widget, IntroductionButtonType)?
         buttonBuilder,
     IntroductionTranslations? introductionTranslations,
+    IntroductionButtonTextstyles? introductionButtonTextstyles,
   }) =>
       IntroductionOptions(
         mode: mode ?? this.mode,
@@ -228,10 +240,11 @@ class IntroductionOptions {
         buttonBuilder: buttonBuilder ?? this.buttonBuilder,
         introductionTranslations:
             introductionTranslations ?? this.introductionTranslations,
+        introductionButtonTextstyles:
+            introductionButtonTextstyles ?? this.introductionButtonTextstyles,
       );
 }
 
-///
 class IntroductionTranslations {
   const IntroductionTranslations({
     this.skipButton = 'skip',
@@ -243,4 +256,17 @@ class IntroductionTranslations {
   final String nextButton;
   final String previousButton;
   final String finishButton;
+}
+
+class IntroductionButtonTextstyles {
+  const IntroductionButtonTextstyles({
+    this.skipButtonStyle,
+    this.nextButtonStyle,
+    this.previousButtonStyle,
+    this.finishButtonStyle,
+  });
+  final TextStyle? skipButtonStyle;
+  final TextStyle? nextButtonStyle;
+  final TextStyle? previousButtonStyle;
+  final TextStyle? finishButtonStyle;
 }

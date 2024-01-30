@@ -19,6 +19,9 @@ scripts:
 
   upgrade:
     run: melos exec -c 1 -- "flutter pub upgrade"
+  
+  upgrade-major:
+    run: melos exec -c 1 -- "flutter pub upgrade --major-versions"
 
   create:
     # run create in the example folder of flutter_introduction, flutter_introduction_firebase
