@@ -23,16 +23,21 @@ class Indicator extends StatelessWidget {
           'must be provided',
         );
 
+  /// The mode of the indicator.
   final IndicatorMode mode;
+
+  /// The PageController for which the indicator is displayed.
   final PageController controller;
-  final Widget Function(
-    BuildContext,
-    PageController,
-    int,
-    int,
-  )? indicatorBuilder;
-  final int index;
+
+  /// The total number of items managed by the PageController.
   final int count;
+
+  /// The index of the current item in the PageController.
+  final int index;
+
+  /// Builder function for a custom indicator.
+  final Widget Function(BuildContext, PageController, int, int)?
+      indicatorBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +89,20 @@ class DashIndicator extends AnimatedWidget {
     this.color = Colors.white,
     super.key,
   }) : super(listenable: controller);
+
+  /// The PageController for which the indicator is displayed.
   final PageController controller;
+
+  /// The color of the dashes.
   final Color color;
+
+  /// The color of the selected dash.
   final Color selectedColor;
+
+  /// The total number of items managed by the PageController.
   final int itemCount;
+
+  /// Callback function called when a dash is selected.
   final Function(int) onPageSelected;
 
   int _getPage() {

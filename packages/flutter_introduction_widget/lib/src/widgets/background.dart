@@ -4,14 +4,19 @@
 
 import 'package:flutter/material.dart';
 
+/// Widget representing a background with optional decoration.
 class Background extends StatelessWidget {
+  /// Constructs a Background widget.
   const Background({
     required this.child,
     this.background,
     super.key,
   });
 
+  /// Optional decoration for the background.
   final BoxDecoration? background;
+
+  /// The widget to be placed on the background.
   final Widget child;
 
   @override

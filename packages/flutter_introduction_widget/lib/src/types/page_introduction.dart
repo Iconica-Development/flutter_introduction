@@ -11,7 +11,12 @@ import 'package:flutter_introduction_widget/src/widgets/background.dart';
 import 'package:flutter_introduction_widget/src/widgets/indicator.dart';
 import 'package:flutter_introduction_widget/src/widgets/page_content.dart';
 
+/// A screen widget for displaying a multi-page introduction.
+///
+/// This widget provides a multi-page introduction experience with options
+/// for handling navigation and completion callbacks.
 class MultiPageIntroductionScreen extends StatefulWidget {
+  /// Creates a new instance of [MultiPageIntroductionScreen].
   const MultiPageIntroductionScreen({
     required this.options,
     required this.onComplete,
@@ -22,12 +27,22 @@ class MultiPageIntroductionScreen extends StatefulWidget {
     super.key,
   });
 
+  /// Callback function triggered when the introduction is completed.
   final VoidCallback onComplete;
-  final VoidCallback? onSkip;
+
+  /// Callback function triggered when the "Next" button is pressed.
   final void Function(IntroductionPage)? onNext;
+
+  /// Callback function triggered when the "Previous" button is pressed.
   final void Function(IntroductionPage)? onPrevious;
+
+  /// Callback function triggered when the "Skip" button is pressed.
+  final VoidCallback? onSkip;
+
+  /// Physics for the scrolling behavior.
   final ScrollPhysics? physics;
 
+  /// Introduction options specifying the configuration of the introduction.
   final IntroductionOptions options;
 
   @override
@@ -35,6 +50,9 @@ class MultiPageIntroductionScreen extends StatefulWidget {
       _MultiPageIntroductionScreenState();
 }
 
+/// State class for [MultiPageIntroductionScreen].
+///
+/// Manages the state and behavior of the [MultiPageIntroductionScreen] widget.
 class _MultiPageIntroductionScreenState
     extends State<MultiPageIntroductionScreen> {
   final PageController _controller = PageController();
@@ -449,16 +467,31 @@ class IntroductionOneButton extends StatelessWidget {
     super.key,
   });
 
+  /// Options specifying the configuration of the introduction.
   final IntroductionOptions options;
+
+  /// Controller for managing the pages of the introduction.
   final PageController controller;
+
+  /// Callback function triggered when the introduction is completed.
   final VoidCallback? onFinish;
+
+  /// Callback function triggered when the "Next" button is pressed.
   final VoidCallback? onNext;
+
+  /// Callback function triggered when the "Previous" button is pressed.
   final VoidCallback? onPrevious;
 
+  /// Indicates whether there are previous pages.
   final bool previous;
+
+  /// Indicates whether there are next pages.
   final bool next;
+
+  /// Indicates whether this is the last page.
   final bool last;
 
+  /// Handles the navigation to the previous page.
   Future<void> _previous() async {
     await controller.previousPage(
       duration: kAnimationDuration,
@@ -585,16 +618,31 @@ class IntroductionIconButtons extends StatelessWidget {
     super.key,
   });
 
+  /// Options specifying the configuration of the introduction.
   final IntroductionOptions options;
+
+  /// Controller for managing the pages of the introduction.
   final PageController controller;
+
+  /// Callback function triggered when the introduction is completed.
   final VoidCallback? onFinish;
+
+  /// Callback function triggered when the "Next" button is pressed.
   final VoidCallback? onNext;
+
+  /// Callback function triggered when the "Previous" button is pressed.
   final VoidCallback? onPrevious;
 
+  /// Indicates whether there are previous pages.
   final bool previous;
+
+  /// Indicates whether there are next pages.
   final bool next;
+
+  /// Indicates whether this is the last page.
   final bool last;
 
+  /// Handles the navigation to the previous page.
   Future<void> _previous() async {
     await controller.previousPage(
       duration: kAnimationDuration,
