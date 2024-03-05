@@ -6,12 +6,15 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_introduction_widget/src/config/introduction.dart';
 
+/// Widget representing a single introduction page.
 class SingleIntroductionPage extends StatelessWidget {
+  /// Constructs a [SingleIntroductionPage] widget.
   const SingleIntroductionPage({
     required this.options,
     super.key,
   });
 
+  /// Options specifying the configuration of the introduction.
   final IntroductionOptions options;
 
   @override

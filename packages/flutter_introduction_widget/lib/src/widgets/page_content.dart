@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_introduction_widget/src/config/introduction.dart';
 
+/// Widget representing the content of an introduction page.
 class IntroductionPageContent extends StatelessWidget {
+  /// Constructs an IntroductionPageContent widget.
   const IntroductionPageContent({
     required this.title,
     required this.text,
@@ -16,10 +18,19 @@ class IntroductionPageContent extends StatelessWidget {
     super.key,
   });
 
+  /// The title widget.
   final Widget? title;
+
+  /// The text widget.
   final Widget? text;
+
+  /// The graphic widget.
   final Widget? graphic;
+
+  /// The layout style of the content.
   final IntroductionLayoutStyle layoutStyle;
+
+  /// Callback function called when the content is tapped.
   final VoidCallback onTap;
 
   @override

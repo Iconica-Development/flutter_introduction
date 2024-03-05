@@ -19,10 +19,19 @@ class Introduction extends StatefulWidget {
     super.key,
   });
 
+  /// Callback function to navigate to the next screen.
   final VoidCallback navigateTo;
+
+  /// The introduction service to use.
   final IntroductionService? service;
+
+  /// Options for configuring the introduction screen.
   final IntroductionOptions options;
+
+  /// The scrolling physics for the introduction screen.
   final ScrollPhysics? physics;
+
+  /// Child widget to display.
   final Widget? child;
 
   @override
