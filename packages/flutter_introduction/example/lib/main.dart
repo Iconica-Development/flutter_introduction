@@ -39,20 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Introduction(
           options: IntroductionOptions(
             pages: [
-              IntroductionPage(
-                title: const Text('First page'),
-                text: const Text('Wow a page'),
-                graphic: const FlutterLogo(),
+              const IntroductionPage(
+                title: Text('First page'),
+                text: Text('Wow a page'),
+                graphic: FlutterLogo(),
               ),
-              IntroductionPage(
-                title: const Text('Second page'),
-                text: const Text('Another page'),
-                graphic: const FlutterLogo(),
+              const IntroductionPage(
+                title: Text('Second page'),
+                text: Text('Another page'),
+                graphic: FlutterLogo(),
               ),
-              IntroductionPage(
-                title: const Text('Third page'),
-                text: const Text('The final page of this app'),
-                graphic: const FlutterLogo(),
+              const IntroductionPage(
+                title: Text('Third page'),
+                text: Text('The final page of this app'),
+                graphic: FlutterLogo(),
               ),
             ],
             introductionTranslations: const IntroductionTranslations(

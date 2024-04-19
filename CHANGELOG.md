@@ -1,3 +1,8 @@
+## 3.0.0
+
+* Update default styling
+* Add default introduction
+
 ## 2.1.0
 
 * Upgrade dependencies

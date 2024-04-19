@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_introduction_widget/src/config/default_introduction_pages.dart';
 
 enum IntroductionScreenMode { showNever, showAlways, showOnce }
 
@@ -42,7 +43,7 @@ class IntroductionPage {
   ///
   /// The [background] is fully optional and if not provided will show the
   /// [ThemeData.colorScheme.background] as default.
-  IntroductionPage({
+  const IntroductionPage({
     this.title,
     this.text,
     this.graphic,
@@ -60,11 +61,11 @@ class IntroductionOptions {
   const IntroductionOptions({
     this.introductionTranslations = const IntroductionTranslations(),
     this.introductionButtonTextstyles = const IntroductionButtonTextstyles(),
-    this.indicatorMode = IndicatorMode.dash,
+    this.indicatorMode = IndicatorMode.dot,
     this.indicatorBuilder,
     this.layoutStyle = IntroductionLayoutStyle.imageCenter,
-    this.pages = const [],
-    this.buttonMode = IntroductionScreenButtonMode.disabled,
+    this.pages = defaultIntroductionPages,
+    this.buttonMode = IntroductionScreenButtonMode.text,
     this.tapEnabled = false,
     this.mode = IntroductionScreenMode.showNever,
     this.textAlign = TextAlign.center,
@@ -248,9 +249,9 @@ class IntroductionOptions {
 class IntroductionTranslations {
   const IntroductionTranslations({
     this.skipButton = 'skip',
-    this.nextButton = 'next',
-    this.previousButton = 'previous',
-    this.finishButton = 'finish',
+    this.nextButton = 'Next',
+    this.previousButton = 'Previous',
+    this.finishButton = 'Get Started',
   });
   final String skipButton;
   final String nextButton;
@@ -260,10 +261,22 @@ class IntroductionTranslations {
 
 class IntroductionButtonTextstyles {
   const IntroductionButtonTextstyles({
-    this.skipButtonStyle,
-    this.nextButtonStyle,
-    this.previousButtonStyle,
-    this.finishButtonStyle,
+    this.skipButtonStyle = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    this.nextButtonStyle = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    this.previousButtonStyle = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    this.finishButtonStyle = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
   });
   final TextStyle? skipButtonStyle;
   final TextStyle? nextButtonStyle;

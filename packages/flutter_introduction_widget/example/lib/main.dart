@@ -32,29 +32,29 @@ class MyApp extends StatelessWidget {
       home: IntroductionScreen(
         options: IntroductionOptions(
           pages: [
-            IntroductionPage(
-              title: const Text('Basic Page'),
-              text: const Text(
+            const IntroductionPage(
+              title: Text('Basic Page'),
+              text: Text(
                 'A page with some text and a widget in the middle.',
               ),
-              graphic: const FlutterLogo(size: 100),
+              graphic: FlutterLogo(size: 100),
             ),
-            IntroductionPage(
-              title: const Text('Layout Shift'),
-              text: const Text(
+            const IntroductionPage(
+              title: Text('Layout Shift'),
+              text: Text(
                 'You can change the layout of a page to mix things up.',
               ),
-              graphic: const FlutterLogo(size: 100),
+              graphic: FlutterLogo(size: 100),
               layoutStyle: IntroductionLayoutStyle.imageTop,
             ),
-            IntroductionPage(
-              title: const Text(
+            const IntroductionPage(
+              title: Text(
                 'Decoration',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
@@ -66,24 +66,24 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
               ),
-              text: const Text(
+              text: Text(
                 'Add a Decoration to make a custom background, like a LinearGradient',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
-              graphic: const FlutterLogo(
+              graphic: FlutterLogo(
                 size: 100,
               ),
             ),
-            IntroductionPage(
-              title: const Text(
+            const IntroductionPage(
+              title: Text(
                 'Background Image',
               ),
-              text: const Text(
+              text: Text(
                 'Add a Decoration with a DecorationImage, to add an background image',
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
