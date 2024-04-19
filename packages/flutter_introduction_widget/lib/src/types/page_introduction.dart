@@ -351,12 +351,28 @@ class IntroductionTwoButtons extends StatelessWidget {
                   ),
                   IntroductionButtonType.previous,
                 ) ??
-                TextButton(
-                  onPressed: _previous,
-                  child: Text(
-                    translations.previousButton,
-                    style: options
-                        .introductionButtonTextstyles.previousButtonStyle,
+                InkWell(
+                  onTap: _previous,
+                  child: Container(
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: const Color(
+                          0xff979797,
+                        ),
+                      ),
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2.0),
+                        child: Text(
+                          translations.previousButton,
+                          style: options
+                              .introductionButtonTextstyles.previousButtonStyle,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
           ] else
@@ -371,11 +387,28 @@ class IntroductionTwoButtons extends StatelessWidget {
                   ),
                   IntroductionButtonType.next,
                 ) ??
-                TextButton(
-                  onPressed: _next,
-                  child: Text(
-                    translations.nextButton,
-                    style: options.introductionButtonTextstyles.nextButtonStyle,
+                InkWell(
+                  onTap: _next,
+                  child: Container(
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: const Color(
+                          0xff979797,
+                        ),
+                      ),
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2.0),
+                        child: Text(
+                          translations.nextButton,
+                          style: options
+                              .introductionButtonTextstyles.nextButtonStyle,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
           ] else if (last) ...[
@@ -391,14 +424,30 @@ class IntroductionTwoButtons extends StatelessWidget {
                   ),
                   IntroductionButtonType.finish,
                 ) ??
-                TextButton(
-                  onPressed: () {
+                InkWell(
+                  onTap: () {
                     onFinish?.call();
                   },
-                  child: Text(
-                    translations.finishButton,
-                    style:
-                        options.introductionButtonTextstyles.finishButtonStyle,
+                  child: Container(
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: const Color(
+                          0xff979797,
+                        ),
+                      ),
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2.0),
+                        child: Text(
+                          translations.finishButton,
+                          style: options
+                              .introductionButtonTextstyles.finishButtonStyle,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
           ] else ...[
@@ -426,14 +475,30 @@ class IntroductionTwoButtons extends StatelessWidget {
                       ),
                       IntroductionButtonType.finish,
                     ) ??
-                    ElevatedButton(
-                      onPressed: () {
+                    InkWell(
+                      onTap: () {
                         onFinish?.call();
                       },
-                      child: Text(
-                        translations.finishButton,
-                        style: options
-                            .introductionButtonTextstyles.finishButtonStyle,
+                      child: Container(
+                        width: 180,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: const Color(
+                              0xff979797,
+                            ),
+                          ),
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2.0),
+                            child: Text(
+                              translations.finishButton,
+                              style: options.introductionButtonTextstyles
+                                  .finishButtonStyle,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
               ),

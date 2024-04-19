@@ -63,6 +63,7 @@ class Indicator extends StatelessWidget {
         );
       case IndicatorMode.dash:
         return DashIndicator(
+          color: theme.colorScheme.primary,
           controller: controller,
           selectedColor: theme.colorScheme.primary,
           itemCount: count,
