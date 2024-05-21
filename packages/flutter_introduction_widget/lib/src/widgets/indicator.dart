@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_introduction_widget/src/config/introduction.dart';
@@ -16,6 +15,8 @@ class Indicator extends StatelessWidget {
     required this.count,
     required this.index,
     required this.indicatorBuilder,
+    required this.dotSize,
+    required this.dotSpacing,
     super.key,
   }) : assert(
           !(mode == IndicatorMode.custom && indicatorBuilder == null),
@@ -39,6 +40,12 @@ class Indicator extends StatelessWidget {
   final Widget Function(BuildContext, PageController, int, int)?
       indicatorBuilder;
 
+  /// The size of the dots.
+  final double dotSize;
+
+  /// The distance between the center of each dot.
+  final double dotSpacing;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -47,9 +54,10 @@ class Indicator extends StatelessWidget {
         return indicatorBuilder!.call(context, controller, index, count);
       case IndicatorMode.dot:
         return DotsIndicator(
+          dotSize: dotSize,
+          dotSpacing: dotSpacing,
           controller: controller,
-          color: theme.colorScheme.primary,
-          dotcolor: theme.colorScheme.secondary,
+          color: theme.colorScheme.secondary,
           itemCount: count,
           onPageSelected: (int page) {
             unawaited(
@@ -153,16 +161,15 @@ class DotsIndicator extends AnimatedWidget {
   const DotsIndicator({
     required this.controller,
     this.color = Colors.white,
-    this.dotcolor = Colors.green,
     this.itemCount,
     this.onPageSelected,
+    this.dotSize = 8.0,
+    this.dotSpacing = 24.0,
     super.key,
   }) : super(
           listenable: controller,
         );
 
-  /// The PageController that this DotsIndicator is representing.
-  final Color? dotcolor;
   final PageController controller;
 
   /// The number of items managed by the PageController
@@ -177,47 +184,31 @@ class DotsIndicator extends AnimatedWidget {
   final Color color;
 
   // The base size of the dots
-  static const double _kDotSize = 4.0;
+  final double dotSize;
+  final double dotSpacing;
 
-  // The increase in the size of the selected dot
-  static const double _kMaxZoom = 2.0;
-
-  // The distance between the center of each dot
-  static const double _kDotSpacing = 12.0;
-
-  Widget _buildDot(int index) {
-    var selectedness = Curves.easeOut.transform(
-      max(
-        0.0,
-        1.0 -
-            ((controller.page ?? controller.initialPage).round() - index).abs(),
-      ),
-    );
-    var zoom = 1.0 + (_kMaxZoom - 1.0) * selectedness;
-
-    return SizedBox(
-      width: _kDotSpacing,
-      child: Center(
-        child: Material(
-          color: (((controller.page ?? controller.initialPage).round()) == index
-              ? color
-              : color.withAlpha(125)),
-          type: MaterialType.circle,
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(width: 2, color: dotcolor!),
-            ),
-            width: _kDotSize * 2 * zoom,
-            height: _kDotSize * 2 * zoom,
-            child: InkWell(
-              onTap: () => onPageSelected!.call(index),
+  Widget _buildDot(int index) => SizedBox(
+        width: dotSpacing,
+        child: Center(
+          child: Material(
+            color:
+                (((controller.page ?? controller.initialPage).round()) == index
+                    ? color
+                    : color.withAlpha(125)),
+            type: MaterialType.circle,
+            child: Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              width: dotSize,
+              height: dotSize,
+              child: InkWell(
+                onTap: () => onPageSelected!.call(index),
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 
   @override
   Widget build(BuildContext context) => Row(

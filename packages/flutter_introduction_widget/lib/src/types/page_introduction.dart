@@ -155,10 +155,15 @@ class _MultiPageIntroductionScreenState
                         controller: _controller,
                         count: pages.length,
                         index: _currentPage.value,
+                        dotSize: widget.options.dotSize,
+                        dotSpacing: widget.options.dotSpacing,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(32),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 40,
+                        horizontal: 20,
+                      ),
                       child: AnimatedBuilder(
                         animation: _controller,
                         builder: (context, _) {
@@ -270,14 +275,14 @@ class ExplainerPage extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: DefaultTextStyle(
-                    style: theme.textTheme.displayMedium!,
+                    style: theme.textTheme.titleMedium!,
                     child: page.title ?? Text('introduction.$index.title'),
                   ),
                 ),
                 text: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: DefaultTextStyle(
-                    style: theme.textTheme.bodyLarge!,
+                    style: theme.textTheme.bodyMedium!,
                     child: page.text ?? Text('introduction.$index.description'),
                   ),
                 ),
@@ -340,116 +345,148 @@ class IntroductionTwoButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (options.buttonMode == IntroductionScreenButtonMode.text) ...[
-          if (previous) ...[
-            options.buttonBuilder?.call(
-                  context,
-                  _previous,
-                  Text(
-                    translations.previousButton,
-                    style: options
-                        .introductionButtonTextstyles.previousButtonStyle,
-                  ),
-                  IntroductionButtonType.previous,
-                ) ??
-                InkWell(
-                  onTap: _previous,
-                  child: Container(
-                    width: 180,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: const Color(
-                          0xff979797,
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 6),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 180,
+                ),
+                child: Opacity(
+                  opacity: previous ? 1 : 0,
+                  child: IgnorePointer(
+                    ignoring: !previous,
+                    child: options.buttonBuilder?.call(
+                          context,
+                          _previous,
+                          Text(
+                            translations.previousButton,
+                            style: options.introductionButtonTextstyles
+                                .previousButtonStyle,
+                          ),
+                          IntroductionButtonType.previous,
+                        ) ??
+                        InkWell(
+                          onTap: _previous,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: const Color(
+                                  0xff979797,
+                                ),
+                              ),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4),
+                                child: Text(
+                                  translations.previousButton,
+                                  style: options.introductionButtonTextstyles
+                                      .previousButtonStyle,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2.0),
-                        child: Text(
-                          translations.previousButton,
-                          style: options
-                              .introductionButtonTextstyles.previousButtonStyle,
-                        ),
-                      ),
-                    ),
                   ),
                 ),
-          ] else
-            const SizedBox.shrink(),
+              ),
+            ),
+          ),
           if (next) ...[
-            options.buttonBuilder?.call(
-                  context,
-                  _next,
-                  Text(
-                    translations.nextButton,
-                    style: options.introductionButtonTextstyles.nextButtonStyle,
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 6),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 180,
                   ),
-                  IntroductionButtonType.next,
-                ) ??
-                InkWell(
-                  onTap: _next,
-                  child: Container(
-                    width: 180,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: const Color(
-                          0xff979797,
-                        ),
-                      ),
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2.0),
-                        child: Text(
+                  child: options.buttonBuilder?.call(
+                        context,
+                        _next,
+                        Text(
                           translations.nextButton,
                           style: options
                               .introductionButtonTextstyles.nextButtonStyle,
                         ),
-                      ),
-                    ),
-                  ),
-                ),
-          ] else if (last) ...[
-            options.buttonBuilder?.call(
-                  context,
-                  () {
-                    onFinish?.call();
-                  },
-                  Text(
-                    translations.finishButton,
-                    style:
-                        options.introductionButtonTextstyles.finishButtonStyle,
-                  ),
-                  IntroductionButtonType.finish,
-                ) ??
-                InkWell(
-                  onTap: () {
-                    onFinish?.call();
-                  },
-                  child: Container(
-                    width: 180,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: const Color(
-                          0xff979797,
+                        IntroductionButtonType.next,
+                      ) ??
+                      InkWell(
+                        onTap: _next,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: const Color(
+                                0xff979797,
+                              ),
+                            ),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4),
+                              child: Text(
+                                translations.nextButton,
+                                style: options.introductionButtonTextstyles
+                                    .nextButtonStyle,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2.0),
-                        child: Text(
+                ),
+              ),
+            ),
+          ] else if (last) ...[
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 6),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 180,
+                  ),
+                  child: options.buttonBuilder?.call(
+                        context,
+                        () {
+                          onFinish?.call();
+                        },
+                        Text(
                           translations.finishButton,
                           style: options
                               .introductionButtonTextstyles.finishButtonStyle,
                         ),
+                        IntroductionButtonType.finish,
+                      ) ??
+                      InkWell(
+                        onTap: () {
+                          onFinish?.call();
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: const Color(
+                                0xff979797,
+                              ),
+                            ),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4),
+                              child: Text(
+                                translations.finishButton,
+                                style: options.introductionButtonTextstyles
+                                    .finishButtonStyle,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
                 ),
+              ),
+            ),
           ] else ...[
             const SizedBox.shrink(),
           ],
@@ -463,44 +500,51 @@ class IntroductionTwoButtons extends StatelessWidget {
               maintainState: true,
               maintainInteractivity: false,
               child: Align(
-                child: options.buttonBuilder?.call(
-                      context,
-                      () {
-                        onFinish?.call();
-                      },
-                      Text(
-                        translations.finishButton,
-                        style: options
-                            .introductionButtonTextstyles.finishButtonStyle,
-                      ),
-                      IntroductionButtonType.finish,
-                    ) ??
-                    InkWell(
-                      onTap: () {
-                        onFinish?.call();
-                      },
-                      child: Container(
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: const Color(
-                              0xff979797,
-                            ),
-                          ),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 2.0),
-                            child: Text(
-                              translations.finishButton,
-                              style: options.introductionButtonTextstyles
-                                  .finishButtonStyle,
-                            ),
-                          ),
-                        ),
-                      ),
+                child: Flexible(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 180,
                     ),
+                    child: options.buttonBuilder?.call(
+                          context,
+                          () {
+                            onFinish?.call();
+                          },
+                          Text(
+                            translations.finishButton,
+                            style: options
+                                .introductionButtonTextstyles.finishButtonStyle,
+                          ),
+                          IntroductionButtonType.finish,
+                        ) ??
+                        InkWell(
+                          onTap: () {
+                            onFinish?.call();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: const Color(
+                                  0xff979797,
+                                ),
+                              ),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4),
+                                child: Text(
+                                  translations.finishButton,
+                                  style: options.introductionButtonTextstyles
+                                      .finishButtonStyle,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                  ),
+                ),
               ),
             ),
           ),

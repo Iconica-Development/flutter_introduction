@@ -56,7 +56,9 @@ class _IntroductionState extends State<Introduction> {
         // ignore: discarded_futures
         future: _service.shouldShow(),
         builder: (context, snapshot) {
-          if (snapshot.data == null || snapshot.data!) {
+          if (snapshot.data == null ||
+              snapshot.data! ||
+              widget.options.mode == IntroductionScreenMode.showAlways) {
             return IntroductionScreen(
               options: widget.options,
               onComplete: () async {
