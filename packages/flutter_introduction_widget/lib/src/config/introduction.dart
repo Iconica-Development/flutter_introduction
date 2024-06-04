@@ -63,7 +63,7 @@ class IntroductionOptions {
     this.introductionButtonTextstyles = const IntroductionButtonTextstyles(),
     this.indicatorMode = IndicatorMode.dot,
     this.indicatorBuilder,
-    this.layoutStyle = IntroductionLayoutStyle.imageCenter,
+    this.layoutStyle = IntroductionLayoutStyle.imageBottom,
     this.pages = defaultIntroductionPages,
     this.buttonMode = IntroductionScreenButtonMode.text,
     this.tapEnabled = false,
@@ -73,6 +73,8 @@ class IntroductionOptions {
     this.skippable = false,
     this.buttonBuilder,
     this.controlMode = IntroductionControlMode.previousNextButton,
+    this.dotSize = 12,
+    this.dotSpacing = 24,
   }) : assert(
           !(identical(indicatorMode, IndicatorMode.custom) &&
               indicatorBuilder == null),
@@ -204,6 +206,12 @@ class IntroductionOptions {
   /// - Finish
   final IntroductionButtonTextstyles introductionButtonTextstyles;
 
+  /// The size of the dots in the indicator. Default is 12
+  final double dotSize;
+
+  /// The distance between the center of each dot. Default is 24
+  final double dotSpacing;
+
   IntroductionOptions copyWith({
     IntroductionScreenMode? mode,
     List<IntroductionPage>? pages,
@@ -248,7 +256,7 @@ class IntroductionOptions {
 
 class IntroductionTranslations {
   const IntroductionTranslations({
-    this.skipButton = 'skip',
+    this.skipButton = 'Skip',
     this.nextButton = 'Next',
     this.previousButton = 'Previous',
     this.finishButton = 'Get Started',

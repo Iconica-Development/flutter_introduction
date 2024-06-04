@@ -1,3 +1,8 @@
+## 3.1.0
+
+* Introduction now uses `IntroductionScreenMode` to determine how often the introductions should be shown
+* Added `dotSize` and `dotSpacing` to `IntroductionOptions` to allow for customization of the dots for the introduction
+
 ## 3.0.0
 
 * Update default styling
