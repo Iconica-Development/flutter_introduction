@@ -24,7 +24,7 @@ class Background extends StatelessWidget {
     var theme = Theme.of(context);
     var background = this.background ??
         BoxDecoration(
-          color: theme.colorScheme.background,
+          color: theme.colorScheme.surface,
         );
     var size = MediaQuery.of(context).size;
     return Container(
