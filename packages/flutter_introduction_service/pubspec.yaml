@@ -1,20 +1,19 @@
 name: flutter_introduction_service
 description: A new Flutter package project.
 version: 4.0.0
-publish_to: none
+
+publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_introduction_interface:
-    git: 
-      url: https://github.com/Iconica-Development/flutter_introduction
-      ref: 4.0.0
-      path: packages/flutter_introduction_interface
+    hosted:  https://forgejo.internal.iconica.nl/api/packages/internal/pub
+    version: "^4.0.0"
   
 dev_dependencies:
   flutter_test:
