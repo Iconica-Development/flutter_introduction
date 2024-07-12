@@ -17,6 +17,7 @@ class Indicator extends StatelessWidget {
     required this.indicatorBuilder,
     required this.dotSize,
     required this.dotSpacing,
+    required this.options,
     super.key,
   }) : assert(
           !(mode == IndicatorMode.custom && indicatorBuilder == null),
@@ -46,6 +47,8 @@ class Indicator extends StatelessWidget {
   /// The distance between the center of each dot.
   final double dotSpacing;
 
+  final IntroductionOptions options;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -57,7 +60,7 @@ class Indicator extends StatelessWidget {
           dotSize: dotSize,
           dotSpacing: dotSpacing,
           controller: controller,
-          color: theme.colorScheme.secondary,
+          color: options.dotColor ?? theme.colorScheme.primary,
           itemCount: count,
           onPageSelected: (int page) {
             unawaited(
@@ -73,7 +76,7 @@ class Indicator extends StatelessWidget {
         return DashIndicator(
           color: theme.colorScheme.primary,
           controller: controller,
-          selectedColor: theme.colorScheme.primary,
+          selectedColor: options.dotColor ?? theme.colorScheme.primary,
           itemCount: count,
           onPageSelected: (int page) {
             unawaited(

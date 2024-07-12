@@ -77,7 +77,7 @@ class _MultiPageIntroductionScreenState
 
   @override
   Widget build(BuildContext context) {
-    var pages = widget.options.pages;
+    var pages = widget.options.pages.call(context);
     var translations = widget.options.introductionTranslations;
     return Stack(
       children: [
@@ -150,6 +150,7 @@ class _MultiPageIntroductionScreenState
                     AnimatedBuilder(
                       animation: _currentPage,
                       builder: (context, _) => Indicator(
+                        options: widget.options,
                         indicatorBuilder: widget.options.indicatorBuilder,
                         mode: widget.options.indicatorMode,
                         controller: _controller,
@@ -341,6 +342,7 @@ class IntroductionTwoButtons extends StatelessWidget {
     var translations = options.introductionTranslations;
     var showFinishButton =
         options.buttonMode == IntroductionScreenButtonMode.singleFinish;
+    var theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -362,7 +364,8 @@ class IntroductionTwoButtons extends StatelessWidget {
                           Text(
                             translations.previousButton,
                             style: options.introductionButtonTextstyles
-                                .previousButtonStyle,
+                                    .previousButtonStyle ??
+                                theme.textTheme.bodyMedium,
                           ),
                           IntroductionButtonType.previous,
                         ) ??
@@ -384,7 +387,8 @@ class IntroductionTwoButtons extends StatelessWidget {
                                 child: Text(
                                   translations.previousButton,
                                   style: options.introductionButtonTextstyles
-                                      .previousButtonStyle,
+                                          .previousButtonStyle ??
+                                      theme.textTheme.bodyMedium,
                                 ),
                               ),
                             ),
@@ -408,8 +412,9 @@ class IntroductionTwoButtons extends StatelessWidget {
                         _next,
                         Text(
                           translations.nextButton,
-                          style: options
-                              .introductionButtonTextstyles.nextButtonStyle,
+                          style: options.introductionButtonTextstyles
+                                  .nextButtonStyle ??
+                              theme.textTheme.bodyMedium,
                         ),
                         IntroductionButtonType.next,
                       ) ??
@@ -430,7 +435,8 @@ class IntroductionTwoButtons extends StatelessWidget {
                               child: Text(
                                 translations.nextButton,
                                 style: options.introductionButtonTextstyles
-                                    .nextButtonStyle,
+                                        .nextButtonStyle ??
+                                    theme.textTheme.bodyMedium,
                               ),
                             ),
                           ),
@@ -454,8 +460,9 @@ class IntroductionTwoButtons extends StatelessWidget {
                         },
                         Text(
                           translations.finishButton,
-                          style: options
-                              .introductionButtonTextstyles.finishButtonStyle,
+                          style: options.introductionButtonTextstyles
+                                  .finishButtonStyle ??
+                              theme.textTheme.bodyMedium,
                         ),
                         IntroductionButtonType.finish,
                       ) ??
@@ -478,7 +485,8 @@ class IntroductionTwoButtons extends StatelessWidget {
                               child: Text(
                                 translations.finishButton,
                                 style: options.introductionButtonTextstyles
-                                    .finishButtonStyle,
+                                        .finishButtonStyle ??
+                                    theme.textTheme.bodyMedium,
                               ),
                             ),
                           ),
@@ -512,8 +520,9 @@ class IntroductionTwoButtons extends StatelessWidget {
                           },
                           Text(
                             translations.finishButton,
-                            style: options
-                                .introductionButtonTextstyles.finishButtonStyle,
+                            style: options.introductionButtonTextstyles
+                                    .finishButtonStyle ??
+                                theme.textTheme.bodyMedium,
                           ),
                           IntroductionButtonType.finish,
                         ) ??
@@ -537,7 +546,8 @@ class IntroductionTwoButtons extends StatelessWidget {
                                 child: Text(
                                   translations.finishButton,
                                   style: options.introductionButtonTextstyles
-                                      .finishButtonStyle,
+                                          .finishButtonStyle ??
+                                      theme.textTheme.bodyMedium,
                                 ),
                               ),
                             ),

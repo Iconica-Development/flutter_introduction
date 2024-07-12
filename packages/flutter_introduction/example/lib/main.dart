@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) => Scaffold(
         body: Introduction(
           options: IntroductionOptions(
-            pages: [
+            pages: (context) => [
               const IntroductionPage(
                 title: Text('First page'),
                 text: Text('Wow a page'),

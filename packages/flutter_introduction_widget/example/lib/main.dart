@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       ),
       home: IntroductionScreen(
         options: IntroductionOptions(
-          pages: [
+          pages: (context) => [
             const IntroductionPage(
               title: Text('Basic Page'),
               text: Text(
