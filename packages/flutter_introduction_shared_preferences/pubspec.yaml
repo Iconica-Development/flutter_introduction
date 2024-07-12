@@ -1,19 +1,19 @@
 name: flutter_introduction_shared_preferences
 description: A new Flutter package project.
-version: 3.1.0
+version: 4.0.0
 publish_to: none
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_introduction_interface: 
-    git: 
+  flutter_introduction_interface:
+    git:
       url: https://github.com/Iconica-Development/flutter_introduction
-      ref: 3.1.0
+      ref: 4.0.0
       path: packages/flutter_introduction_interface
   shared_preferences: any
 

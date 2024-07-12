@@ -115,7 +115,7 @@ class _IntroductionState extends State<IntroductionFirebase> {
                   snapshot.data is List<IntroductionPageData>) {
                 return IntroductionScreen(
                   options: widget.options.copyWith(
-                    pages: snapshot.data?.map(
+                    pages: (context) => snapshot.data!.map(
                       (e) {
                         var title = e.title.isEmpty
                             ? ''

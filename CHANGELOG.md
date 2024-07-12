@@ -1,3 +1,9 @@
+## 4.0.0
+
+* Added Buildcontext to the pages parameter.
+* Added `dotColor` so the default can be changed.
+* Changed the default `pages` to include theme.
+
 ## 3.1.0
 
 * Introduction now uses `IntroductionScreenMode` to determine how often the introductions should be shown

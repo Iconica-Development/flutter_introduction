@@ -75,6 +75,7 @@ class IntroductionOptions {
     this.controlMode = IntroductionControlMode.previousNextButton,
     this.dotSize = 12,
     this.dotSpacing = 24,
+    this.dotColor,
   }) : assert(
           !(identical(indicatorMode, IndicatorMode.custom) &&
               indicatorBuilder == null),
@@ -95,7 +96,7 @@ class IntroductionOptions {
 
   /// List of introduction pages to set the text, icons or images for the
   /// introduction screens.
-  final List<IntroductionPage> pages;
+  final List<IntroductionPage> Function(BuildContext context) pages;
 
   /// Determines whether the user can tap the screen to go to the next
   /// introduction screen.
@@ -212,9 +213,13 @@ class IntroductionOptions {
   /// The distance between the center of each dot. Default is 24
   final double dotSpacing;
 
+  /// The color of the dots in the indicator. Default is the primary color of
+  /// the theme
+  final Color? dotColor;
+
   IntroductionOptions copyWith({
     IntroductionScreenMode? mode,
-    List<IntroductionPage>? pages,
+    List<IntroductionPage> Function(BuildContext context)? pages,
     bool? tapEnabled,
     IntroductionScreenButtonMode? buttonMode,
     IntroductionLayoutStyle? layoutStyle,
@@ -269,22 +274,10 @@ class IntroductionTranslations {
 
 class IntroductionButtonTextstyles {
   const IntroductionButtonTextstyles({
-    this.skipButtonStyle = const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-    ),
-    this.nextButtonStyle = const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-    ),
-    this.previousButtonStyle = const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-    ),
-    this.finishButtonStyle = const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-    ),
+    this.skipButtonStyle,
+    this.nextButtonStyle,
+    this.previousButtonStyle,
+    this.finishButtonStyle,
   });
   final TextStyle? skipButtonStyle;
   final TextStyle? nextButtonStyle;
