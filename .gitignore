@@ -31,7 +31,6 @@ build/
 
 .metadata
 
-
 pubspec.lock
 
 pubspec_overrides.yaml
@@ -41,3 +40,7 @@ example/web
 example/android
 example/linux
 example/macos
+
+# FVM Version Cache
+.fvm/
+.fvmrc
