@@ -1,3 +1,8 @@
+## 5.0.0
+
+* Changed color of indicators
+* Changed default button text
+
 ## 4.0.0
 
 * Added Buildcontext to the pages parameter.

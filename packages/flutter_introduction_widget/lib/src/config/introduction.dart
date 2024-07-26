@@ -264,7 +264,7 @@ class IntroductionTranslations {
     this.skipButton = 'Skip',
     this.nextButton = 'Next',
     this.previousButton = 'Previous',
-    this.finishButton = 'Get Started',
+    this.finishButton = 'Get started',
   });
   final String skipButton;
   final String nextButton;

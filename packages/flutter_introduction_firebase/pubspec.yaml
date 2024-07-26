@@ -1,7 +1,6 @@
 name: flutter_introduction_firebase
 description: Flutter Introduction Page that uses firebase for the pages and some settings
-version: 4.0.0
-
+version: 5.0.0
 publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub
 
 environment:
@@ -15,10 +14,10 @@ dependencies:
 
   flutter_introduction_widget:
     hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
-    version: "^4.0.0"
+    version: "^5.0.0"
   flutter_introduction_service:
     hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
-    version: "^4.0.0"
+    version: "^5.0.0"
 
 dev_dependencies:
   flutter_test:
