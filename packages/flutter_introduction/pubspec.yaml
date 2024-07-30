@@ -1,7 +1,6 @@
 name: flutter_introduction
 description: Combined Package of Flutter Introduction Widget and Flutter Introduction Service
-version: 4.0.0
-
+version: 5.0.0
 publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub
 
 environment:
@@ -13,10 +12,10 @@ dependencies:
     sdk: flutter
   flutter_introduction_widget:
     hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
-    version: "^4.0.0"
+    version: "^5.0.0"
   flutter_introduction_service:
     hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
-    version: "^4.0.0"
+    version: "^5.0.0"
 
 dev_dependencies:
   flutter_test:

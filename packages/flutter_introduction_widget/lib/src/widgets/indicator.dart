@@ -197,7 +197,7 @@ class DotsIndicator extends AnimatedWidget {
             color:
                 (((controller.page ?? controller.initialPage).round()) == index
                     ? color
-                    : color.withAlpha(125)),
+                    : color.withAlpha(62)),
             type: MaterialType.circle,
             child: Container(
               decoration: const BoxDecoration(

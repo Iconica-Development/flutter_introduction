@@ -1,6 +1,6 @@
 name: flutter_introduction_workspace
 description: The use case level package using both the flutter_introduction_widget and the flutter_introduction_service combined
-version: 4.0.0
+version: 5.0.0
 
 publish_to: None
 
