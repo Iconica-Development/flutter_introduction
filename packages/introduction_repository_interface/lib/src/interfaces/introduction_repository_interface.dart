@@ -7,4 +7,6 @@ abstract class IntroductionRepositoryInterface {
   Future<void> setCompleted({bool value = true});
 
   Future<bool> shouldShow();
+
+  Future<void> prefetchIntroduction();
 }

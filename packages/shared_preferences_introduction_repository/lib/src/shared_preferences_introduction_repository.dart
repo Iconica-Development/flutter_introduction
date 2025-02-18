@@ -3,10 +3,10 @@ import "package:shared_preferences/shared_preferences.dart";
 
 class SharedPreferencesIntroductionRepository
     implements IntroductionRepositoryInterface {
+  bool? _shouldShowIntroduction;
+
   @override
-  Future<List<IntroductionPageData>> fetchIntroductionPages() async {
-    throw Exception();
-  }
+  Future<List<IntroductionPageData>> fetchIntroductionPages() async => [];
 
   @override
   Future<void> setCompleted({bool value = true}) async {
@@ -16,8 +16,18 @@ class SharedPreferencesIntroductionRepository
 
   @override
   Future<bool> shouldShow() async {
+    if (_shouldShowIntroduction != null) {
+      return !_shouldShowIntroduction!;
+    }
     var sharedPrefs = await SharedPreferences.getInstance();
     var shouldShow = sharedPrefs.getBool("_completedIntroduction") ?? true;
-    return !shouldShow;
+    _shouldShowIntroduction = shouldShow;
+    return !_shouldShowIntroduction!;
+  }
+
+  @override
+  Future<void> prefetchIntroduction() async {
+    await shouldShow();
+    await fetchIntroductionPages();
   }
 }

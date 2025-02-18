@@ -7,12 +7,18 @@ import "package:introduction_repository_interface/introduction_repository_interf
 
 class FirebaseIntroductionRepository
     implements IntroductionRepositoryInterface {
+  bool? _shouldShowIntroduction;
+  List<IntroductionPageData>? _introductionPages;
+
   final _introductionCollection = FirebaseFirestore.instance
       .collection("flutter_introduction")
       .doc("flutter_introduction");
 
   @override
   Future<List<IntroductionPageData>> fetchIntroductionPages() async {
+    if (_introductionPages != null) {
+      return _introductionPages!;
+    }
     try {
       var introductionPagesData = await _introductionCollection
           .collection("pages")
@@ -27,6 +33,7 @@ class FirebaseIntroductionRepository
           introductionPagesData.docs.map((e) => e.data()).toList();
 
       introductionPages.sort((a, b) => a.id.compareTo(b.id));
+      _introductionPages = introductionPages;
       return introductionPages;
     } on Exception catch (_) {
       throw Exception();
@@ -51,6 +58,9 @@ class FirebaseIntroductionRepository
 
   @override
   Future<bool> shouldShow() async {
+    if (_shouldShowIntroduction != null) {
+      return _shouldShowIntroduction!;
+    }
     try {
       await FirebaseAuth.instance.signInAnonymously();
       var deviceId = await _getDeviceId();
@@ -64,8 +74,10 @@ class FirebaseIntroductionRepository
       if (!introductionCompleted.exists) {
         return true;
       }
-      // ignore: avoid_dynamic_calls
-      return !introductionCompleted.data()!["introduction_completed"];
+      _shouldShowIntroduction =
+          // ignore: avoid_dynamic_calls
+          !introductionCompleted.data()!["introduction_completed"];
+      return _shouldShowIntroduction!;
     } on Exception catch (_) {
       throw Exception();
     }
@@ -82,5 +94,11 @@ class FirebaseIntroductionRepository
       return iosInfo.identifierForVendor;
     }
     return null;
+  }
+
+  @override
+  Future<void> prefetchIntroduction() async {
+    await shouldShow();
+    await fetchIntroductionPages();
   }
 }

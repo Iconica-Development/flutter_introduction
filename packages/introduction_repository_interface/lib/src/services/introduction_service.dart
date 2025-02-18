@@ -16,4 +16,7 @@ class IntroductionService {
 
   Future<bool> shouldShow() async =>
       introductionRepositoryInterface.shouldShow();
+
+  Future<void> prefetchIntroduction() async =>
+      introductionRepositoryInterface.prefetchIntroduction();
 }

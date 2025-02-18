@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
 import "package:flutter_introduction/flutter_introduction.dart";
-import "package:flutter_introduction/src/config/introduction_theme.dart";
-import "package:flutter_introduction/src/enums/introduction_layout_style.dart";
 
 class IntroductionPage extends StatelessWidget {
   const IntroductionPage({

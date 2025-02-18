@@ -11,7 +11,11 @@ class LocalIntroductionRepository implements IntroductionRepositoryInterface {
   Future<bool> shouldShow() async => !_completed;
 
   @override
-  Future<List<IntroductionPageData>> fetchIntroductionPages() {
-    throw Exception();
+  Future<List<IntroductionPageData>> fetchIntroductionPages() async => [];
+
+  @override
+  Future<void> prefetchIntroduction() async {
+    await shouldShow();
+    await fetchIntroductionPages();
   }
 }

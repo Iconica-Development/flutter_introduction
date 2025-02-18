@@ -17,38 +17,33 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-
     return Expanded(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: 180,
-          maxHeight: 32,
-        ),
-        child: showButton
-            ? FilledButton(
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(
-                    introductionTheme.buttonBackgroundColor,
-                  ),
-                  shape: WidgetStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      side: BorderSide(
-                        color: introductionTheme.buttonBorderColor,
-                        width: 1,
-                      ),
+      child: showButton
+          ? FilledButton(
+              style: ButtonStyle(
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                minimumSize: WidgetStateProperty.all(const Size(160, 32)),
+                backgroundColor: WidgetStateProperty.all(
+                  introductionTheme.buttonBackgroundColor,
+                ),
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                    side: BorderSide(
+                      color: introductionTheme.buttonBorderColor,
+                      width: 1,
                     ),
                   ),
                 ),
-                onPressed: onPressed,
-                child: Text(
-                  text,
-                  style: introductionTheme.buttonTextStyle ??
-                      theme.textTheme.bodyMedium,
-                ),
-              )
-            : const SizedBox(),
-      ),
+              ),
+              onPressed: onPressed,
+              child: Text(
+                text,
+                style: introductionTheme.buttonTextStyle ??
+                    theme.textTheme.bodyMedium,
+              ),
+            )
+          : const SizedBox.shrink(),
     );
   }
 }
