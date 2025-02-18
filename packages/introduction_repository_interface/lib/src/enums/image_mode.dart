@@ -1,0 +1,4 @@
+enum ImageMode {
+  asset,
+  network,
+}

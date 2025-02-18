@@ -1,8 +1,7 @@
-name: flutter_introduction
-description: "A flutter introduction project"
+name: introduction_repository_interface
+description: "A flutter introduction repository interface"
 version: 6.0.0
 homepage: none
-publish_to: none
 
 environment:
   sdk: ^3.5.3
@@ -11,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  introduction_repository_interface:
-    path: ../introduction_repository_interface
 
 dev_dependencies:
   flutter_iconica_analysis:
@@ -20,10 +17,39 @@ dev_dependencies:
       url: https://github.com/Iconica-Development/flutter_iconica_analysis
       ref: 7.0.0
 
-flutter:
-  uses-material-design: true
-
-  assets:
-    - assets/
 
 
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

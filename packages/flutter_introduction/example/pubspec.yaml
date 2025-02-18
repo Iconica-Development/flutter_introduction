@@ -1,31 +1,33 @@
 name: example
-description: A new Flutter project.
+description: "A new Flutter project."
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
-
+  sdk: ^3.5.3
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
-  flutter_introduction: 
+  flutter_introduction:
     path: ../
-  flutter_introduction_shared_preferences: 
-    path: ../../flutter_introduction_shared_preferences
-
+  shared_preferences_introduction_repository:
+    path: ../../shared_preferences_introduction_repository
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_iconica_analysis:
-    git:
-      url: https://github.com/Iconica-Development/flutter_iconica_analysis
-      ref: 6.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - ../assets/
+
+  fonts:
+    - family: Merriweather
+      fonts:
+        - asset: fonts/Merriweather-Regular.ttf
+    - family: Avenir
+      fonts:
+        - asset: fonts/Avenir-Regular.ttf
