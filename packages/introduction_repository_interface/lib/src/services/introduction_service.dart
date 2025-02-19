@@ -1,7 +1,7 @@
 import "package:introduction_repository_interface/introduction_repository_interface.dart";
 
 class IntroductionService {
-  IntroductionService({
+  const IntroductionService({
     IntroductionRepositoryInterface? introductionRepositoryInterface,
   }) : introductionRepositoryInterface =
             introductionRepositoryInterface ?? LocalIntroductionRepository();

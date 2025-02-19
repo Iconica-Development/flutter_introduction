@@ -26,7 +26,7 @@ class IntroductionScreen extends StatefulWidget {
   final IntroductionOptions options;
   final IntroductionTranslations translations;
   final IntroductionTheme introductionTheme;
-  final Function() onDone;
+  final Function(BuildContext context) onDone;
 
   @override
   State<IntroductionScreen> createState() => _IntroductionScreenState();
@@ -54,8 +54,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
         IntroductionScreenMode.showNever) {
       shouldShow = false;
     }
-    if (!shouldShow!) {
-      await widget.onDone();
+    if (!shouldShow! && mounted) {
+      await widget.onDone.call(context);
     }
   }
 
@@ -105,9 +105,12 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             options: widget.options,
             translations: widget.translations,
             introductionTheme: widget.introductionTheme,
-            onDone: () async {
+            onDone: (context) async {
               await introductionService?.setCompleted();
-              await widget.onDone();
+              if (mounted) {
+                // ignore: use_build_context_synchronously
+                await widget.onDone.call(context);
+              }
             },
           );
         },
@@ -128,7 +131,7 @@ class _IntroductionScreen extends StatefulWidget {
   final IntroductionOptions options;
   final IntroductionTranslations translations;
   final List<IntroductionPage> pages;
-  final Function() onDone;
+  final Function(BuildContext context) onDone;
   final IntroductionTheme introductionTheme;
 
   @override
@@ -265,7 +268,7 @@ class __IntroductionScreenState extends State<_IntroductionScreen> {
                           showButton: true,
                           text: widget.translations.doneButton,
                           onPressed: () async {
-                            widget.onDone();
+                            await widget.onDone(context);
                           },
                         ),
                     ],

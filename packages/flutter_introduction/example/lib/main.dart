@@ -24,8 +24,8 @@ class Introduction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
-      onDone: () {
-        debugPrint("done");
+      onDone: (context) {
+        // Do what you want
       },
     );
   }

@@ -1,6 +1,6 @@
 name: firebase_introduction_repository
-description: "A new Flutter package project."
-version: 0.0.1
+description: "Firebase implementation of the introduction repository interface"
+version: 6.0.0
 publish_to: none
 
 environment:

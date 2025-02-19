@@ -13,8 +13,6 @@ dependencies:
     sdk: flutter
   flutter_introduction:
     path: ../
-  shared_preferences_introduction_repository:
-    path: ../../shared_preferences_introduction_repository
 dev_dependencies:
   flutter_lints: ^4.0.0
 
