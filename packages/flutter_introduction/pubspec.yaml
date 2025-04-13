@@ -1,25 +1,20 @@
 name: flutter_introduction
 description: Combined Package of Flutter Introduction Widget and Flutter Introduction Service
-version: 2.0.0
-publish_to: none
+version: 2.0.1
+publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_introduction_widget:
-    git:
-      url: https://github.com/Iconica-Development/flutter_introduction
-      ref: 2.0.0
-      path: packages/flutter_introduction_widget
+    hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
+    version: ^2.0.1
   flutter_introduction_service:
-    git:
-      url: https://github.com/Iconica-Development/flutter_introduction
-      ref: 2.0.0
-      path: packages/flutter_introduction_service
+    hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
+    version: ^2.0.1
 
 dev_dependencies:
   flutter_test:

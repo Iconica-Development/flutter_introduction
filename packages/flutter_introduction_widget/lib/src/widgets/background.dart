@@ -17,10 +17,8 @@ class Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var background = this.background ??
-        BoxDecoration(
-          color: theme.colorScheme.background,
-        );
+    var background =
+        this.background ?? BoxDecoration(color: theme.colorScheme.surface);
     var size = MediaQuery.of(context).size;
     return Container(
       width: size.width,

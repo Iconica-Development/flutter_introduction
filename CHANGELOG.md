@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Ready for publishing
+
 ## 2.0.0
 
 * Initial release of working flutter_introduction mono project.
